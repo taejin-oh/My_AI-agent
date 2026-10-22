@@ -520,6 +520,22 @@ ul{margin:0;padding:0;list-style:none}
         <div class="t"><b>1 / 15</b><span>현 지점 독립 후기 본문 미확보 (Tsui Wah Central)</span></div>
       </div>
 
+      <div class="card">
+        <div class="sec-h"><h2>바 5곳 보강 집계</h2><span class="note">Globe · Bar Leone · Iron Fairies · COA · Pontiac</span></div>
+        <div class="tally" style="margin-top:10px">
+          <div class="t"><b>0 / 5</b><span>Google 상세 패널에서 상호·주소·리뷰를 직접 본 완료. 지도 shell만 표시됨</span></div>
+          <div class="t"><b>3 / 5</b><span>실제 사업체 식별자 확보: COA(공식 embed·버튼 일치), Bar Leone(실방문 embed CID), Iron Fairies(한국 방문글 2개 동일 Place ID)</span></div>
+          <div class="t"><b>2 / 5</b><span>공식 주소·좌표만 확보, 사업체 ID 미확보: The Globe, The Pontiac</span></div>
+        </div>
+        <dl class="kv" style="margin-top:12px">
+          <dt>후기 2개 독립</dt><dd>The Globe, Bar Leone, COA: 독립 방문 자료 2개씩</dd>
+          <dt>매체 2개</dt><dd>The Pontiac: 현지 전문매체 2개. 한국인 실방문 본문 미확보</dd>
+          <dt>1 + 제휴 1</dt><dd>Iron Fairies: 독립 한국 실방문 1개 + Trip.com 제휴 링크 있는 한국 후기 1개. 무광고 실방문 2개 요건 미충족</dd>
+          <dt>대체 카드 3곳</dt><dd>Penicillin 본문 2개, Staunton’s 독립 본문 1개, The Old Man은 2018 방문이라 최신성 매우 낮음</dd>
+        </dl>
+        <p class="footnote" style="margin-top:10px">‘핀 검증 전부 완료’가 아니라 COA 공식 식별자·좌표 확인 / Bar Leone·Iron Fairies 출처 식별자 확보 / Globe·Pontiac 공식 좌표만 확인으로 단계를 구분한다. 후기 2개를 무조건 맞춘 척하지 않는다.</p>
+      </div>
+
       <div class="callout red"><b>중대 오연결</b> · The Iron Fairies 홍콩 공식 페이지의 지도 버튼이 발리 지점(좌표 -8.677, 115.155)으로 연결된다. 이 링크는 홍콩 여행에 사용 금지. 앱의 Iron Fairies 지도 버튼은 독립 한국 방문글 2개에서 일치한 홍콩 Place ID를 쓴다.</div>
 
       <div class="card">
@@ -614,7 +630,7 @@ const PLACES = [
  resv:'Walk-in only, 최대 일행 6명. 금토 15시 개점을 활용하되 대기·착석 보장 안 됨.',
  price:'2026-06 한국 방문 사례 칵테일 HKD 120~150 +10%. 12월 확정 가격 아님.',
  order:'유자 네그로니 또는 Olive Oil Sour + 모르타델라 포카치아 / 훈제 올리브 (메뉴 교체 가능).',
- tips:['옛 후기의 금요일 17시 개점 줄서기 시각은 사용 금지. 현재는 금토 15시 안내.','유명세만 보고 짧은 방문을 보장하지 말 것. 만석이면 SoHo 식사부터.'],
+ tips:['옛 후기의 금요일 17시 개점 줄서기 시각은 사용 금지. 현재는 금토 15시 안내.','유명세만 보고 짧은 방문을 보장하지 말 것. 만석이면 SoHo 식사부터.','같은 계열 Elderflower / Sherry 메뉴에는 개인 선호차가 있음.'],
  reviews:[
   {who:'DEPE (한국 실방문)',date:'2026-06-04 · 5월 금요일 방문',url:'https://depe.tistory.com/290',plus:'접객, 아늑한 이탈리안 빈티지 분위기, 유자 네그로니·올리브오일 사워·모르타델라 포카치아·훈제 올리브 호평.',minus:'Golden Girl은 개인 취향 불일치. 오르막 계단, 개점 전 긴 줄, 바에서 먼 창가 좌석.',w:'제공 고지 발견 못함. 한 명 표본.'},
   {who:'Crystaltonic, 88 Bamboo (독립 매체 실방문)',date:'2025-04-07 · 3월 목요일 22시경',url:'https://88bamboo.co/blogs/escapades/a-study-of-bar-leone-the-cocktail-popolari-finds-its-spiritual-home-in-hong-kong',plus:'30분 대기 후 입장. 편안한 80년대 음악, 따뜻한 서비스. Appletini·Bicicletta Spritz, Goldenboy도 접근성 좋음.',minus:'늦게 방문해 티라미수 품절. 긴 대기.',w:'눈에 띄는 제공 고지 없음. 매체 상업성까지 배제했다는 뜻은 아님.'}
@@ -660,7 +676,7 @@ const PLACES = [
  pin:{level:'공식 식별자·좌표 확인',text:'공식 embed feature 0x3404007c7773ffff:0xb8dd65f0dc2837f6, 좌표 22.2840082, 114.1520992. 한국 실방문 embed와 일치. 공식 최신 지도 버튼이 같은 ID·좌표로 리디렉트되는 것을 확인. 같은 페이지의 옛 링크는 다른 ID(0xde069ebbd9e2e00e)로 풀려 새 링크 우선. Google 상세 패널 미로드.'},
  map:'https://www.google.com/maps/place/COA/@22.2840082,114.1520992,17z/data=!4m6!3m5!1s0x3404007c7773ffff:0xb8dd65f0dc2837f6!8m2!3d22.2840082!4d114.1520992!16s%2Fg%2F11hbgptkr0', mapKind:'핀 링크 (공식 리디렉트 확인)',
  conf:[['운영·정책','high'],['후기','medium'],['Google 상세','low']],
- links:[['공식','https://coa.com.hk/'],['OpenRice','https://www.openrice.com/en/hongkong/r-coa-central-western-wine-r552984'],['검색 링크','https://www.google.com/maps/search/?api=1&query=COA%206-10%20Shin%20Hing%20Street%20Hong%20Kong']]
+ links:[['공식','https://coa.com.hk/'],['공식 지도 버튼 (원 링크)','https://maps.app.goo.gl/8wR8VMbD74EDpU2v8'],['공식 옛 링크 (다른 ID, 사용 안 함)','https://goo.gl/maps/zuX7BHQV19H2'],['병제품 설명 (맛 참고용)','https://coa.com.hk/product/coconut-milk-punch-125ml/'],['OpenRice','https://www.openrice.com/en/hongkong/r-coa-central-western-wine-r552984'],['검색 링크','https://www.google.com/maps/search/?api=1&query=COA%206-10%20Shin%20Hing%20Street%20Hong%20Kong']]
 },
 {
  id:'pontiac', cat:'bar', pri:false, name:'The Pontiac', alt:'록 다이브바 · 시끌벅적',
@@ -735,7 +751,7 @@ const PLACES = [
  pin:{level:'부분검증',text:'Maps 브라우저 검색 후 업장명 ‘Staunton’s Bar & Kitchen’으로 실제 해석. feature 0x3404007ba81d0f33:0x6ff55c8013eb4d1d, 좌표 22.281775, 114.1529006. 상세 패널 주소·Google 후기 미확인. Foodie 2023·Tripadvisor 2026 후기는 본문 403으로 세지 않음.'},
  map:'https://www.google.com/maps/place/Staunton\'s+Bar+%26+Kitchen/@22.281775,114.1529006,17z/data=!3m1!4b1!4m6!3m5!1s0x3404007ba81d0f33:0x6ff55c8013eb4d1d!8m2!3d22.281775!4d114.1529006!16s%2Fg%2F1tdws8fn', mapKind:'핀 링크',
  conf:[['공식 운영','high'],['체험 (1개 본문)','medium'],['최신 가격','low']],
- links:[['공식','https://stauntonshk.com/'],['연락처','https://stauntonshk.com/contact/'],['재개장 기사 SCMP','https://www.scmp.com/lifestyle/food-drink/article/3223071/guinness-london-street-food-stauntons-hong-kong-reopens-under-new-management-blessings-original'],['검색 링크','https://www.google.com/maps/search/?api=1&query=Stauntons%2010-12%20Staunton%20Street%20Hong%20Kong']]
+ links:[['공식','https://stauntonshk.com/'],['연락처','https://stauntonshk.com/contact/'],['재개장 기사 SCMP','https://www.scmp.com/lifestyle/food-drink/article/3223071/guinness-london-street-food-stauntons-hong-kong-reopens-under-new-management-blessings-original'],['Foodie 2023 재개장 시식 (본문 403)','https://www.afoodieworld.com/blog/2023/07/08/stauntons-returns-gastropub/'],['Tripadvisor 2026-09 (본문 403)','https://www.tripadvisor.com/ShowUserReviews-g294217-d26659602-r1076373551-Staunton_s_Gastropub-Hong_Kong.html'],['검색 링크','https://www.google.com/maps/search/?api=1&query=Stauntons%2010-12%20Staunton%20Street%20Hong%20Kong']]
 },
 /* ---------------- FOOD ---------------- */
 {
