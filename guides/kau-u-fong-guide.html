@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Kau U Fong 3박 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: phone-first app shell (bottom tab bar); desktop gets a left rail and a 960px content column.
+   Palette: cool concrete greys (Central's stairs and fog), Hong Kong tram red as the single accent,
+   jade for food, amber for caution. Type: Gothic A1 display, IBM Plex Sans KR body, Plex Mono for times/addresses. */
+:root{
+  --bg:#F2F3F1; --surface:#FFFFFF; --surface-2:#E8EAE6; --surface-3:#DDE0DB;
+  --fg:#171A1C; --muted:#5E6568; --faint:#8A9196; --line:#D5D9D3; --line-strong:#B9BFB8;
+  --accent:#B8323A; --accent-soft:#F6E3E4; --accent-ink:#FFFFFF;
+  --jade:#2E7A6B; --jade-soft:#DDEEE9;
+  --amber:#B7791F; --amber-soft:#F7ECD6;
+  --bar:#7A3E8F; --bar-soft:#EEE2F3;
+  --shadow:0 1px 2px rgba(23,26,28,.06),0 8px 24px rgba(23,26,28,.08);
+  --display:"Gothic A1","IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --r:14px; --r-sm:8px;
+  --tabbar:64px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1417; --surface:#171D21; --surface-2:#1F262B; --surface-3:#283137; --fg:#ECEEEA; --muted:#A3ABAF; --faint:#6F787E; --line:#2A3238; --line-strong:#3B454C;
+    --accent:#E8646C; --accent-soft:#3A2224; --accent-ink:#171D21;
+    --jade:#55B8A3; --jade-soft:#1D332F;
+    --amber:#DCA84A; --amber-soft:#3A3020;
+    --bar:#B88BD0; --bar-soft:#312538;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.45);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1417; --surface:#171D21; --surface-2:#1F262B; --surface-3:#283137;
+  --fg:#ECEEEA; --muted:#A3ABAF; --faint:#6F787E; --line:#2A3238; --line-strong:#3B454C;
+  --accent:#E8646C; --accent-soft:#3A2224; --accent-ink:#171D21;
+  --jade:#55B8A3; --jade-soft:#1D332F;
+  --amber:#DCA84A; --amber-soft:#3A3020;
+  --bar:#B88BD0; --bar-soft:#312538;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.45);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;word-break:keep-all;overflow-wrap:break-word}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+h1,h2,h3,h4{font-family:var(--display);font-weight:800;line-height:1.25;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+[hidden]{display:none!important}
+
+/* ---------- shell ---------- */
+.desk-tabs{display:none}
+.app{min-height:100%;display:flex;flex-direction:column}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:960px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;flex-direction:column;gap:1px;min-width:0;flex:1}
+.brand h1{font-size:17px}
+.brand .sub{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pill-date{font-family:var(--mono);font-size:11px;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:4px 10px;white-space:nowrap}
+.main{flex:1;max-width:960px;width:100%;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:18px calc(var(--tabbar) + 28px + env(safe-area-inset-bottom,0px))}
+.screen{display:none;flex-direction:column;gap:20px;animation:fade .25s ease}
+.screen.active{display:flex}
+@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:9;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(0px,env(safe-area-inset-left,0px));padding-right:max(0px,env(safe-area-inset-right,0px))}
+.tabbar-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);height:var(--tabbar)}
+.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;font-weight:500;color:var(--muted);position:relative}
+.tab svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tab.active{color:var(--accent)}
+.tab.active::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:28px;height:2px;background:var(--accent);border-radius:2px}
+
+@media (min-width:900px){
+  :root{--tabbar:0px}
+  .app{flex-direction:row;align-items:flex-start}
+  .topbar{position:sticky;top:env(safe-area-inset-top,0px);width:240px;height:100vh;flex:none;border-bottom:0;border-right:1px solid var(--line);background:var(--surface)}
+  .topbar-in{flex-direction:column;align-items:stretch;padding-block:24px;gap:16px}
+  .brand h1{font-size:20px}
+  .brand .sub{white-space:normal}
+  .tabbar{display:none}
+  .desk-tabs .tabbar-in{display:flex;flex-direction:column;height:auto;gap:2px}
+  .tab{flex-direction:row;justify-content:flex-start;gap:10px;padding:10px 12px;border-radius:10px;font-size:14px}
+  .tab.active{background:var(--accent-soft)}
+  .tab.active::before{display:none}
+  .desk-tabs{display:block;margin-top:8px}
+  .main{padding-block:32px 48px;padding-left:40px;padding-right:40px}
+}
+
+/* ---------- common ---------- */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.card.flat{background:var(--surface-2);border-color:transparent}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.sec-h h2{font-size:19px}
+.sec-h .note{font-size:12px;color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:10px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.lead{font-size:16px;line-height:1.65}
+.lead strong{font-weight:600;color:var(--accent)}
+.tag{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--line-strong);color:var(--muted);white-space:nowrap}
+.tag.bar{background:var(--bar-soft);border-color:transparent;color:var(--bar)}
+.tag.food{background:var(--jade-soft);border-color:transparent;color:var(--jade)}
+.tag.pri{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
+.tag.warn{background:var(--amber-soft);border-color:transparent;color:var(--amber)}
+.conf{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--muted)}
+.conf i{width:8px;height:8px;border-radius:50%;background:var(--faint);display:inline-block}
+.conf.high i{background:var(--jade)}.conf.mh i{background:linear-gradient(90deg,var(--jade) 50%,var(--amber) 50%)}.conf.medium i{background:var(--amber)}.conf.low i{background:var(--faint)}
+.callout{border-left:3px solid var(--amber);background:var(--amber-soft);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:10px 14px;font-size:13.5px}
+.callout.red{border-color:var(--accent);background:var(--accent-soft)}
+.callout.jade{border-color:var(--jade);background:var(--jade-soft)}
+.list-dot li{position:relative;padding-left:16px}
+.list-dot li::before{content:"";position:absolute;left:2px;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.list-dot{display:flex;flex-direction:column;gap:7px;font-size:14px}
+.kv{display:grid;grid-template-columns:84px 1fr;gap:6px 12px;font-size:13.5px}
+.kv dt{color:var(--muted);font-size:12.5px;padding-top:2px}
+.kv dd{margin:0;min-width:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:36px;padding:0 14px;border-radius:10px;font-size:13.5px;font-weight:500;border:1px solid var(--line-strong);background:var(--surface);text-decoration:none;white-space:nowrap}
+.btn:hover{background:var(--surface-2)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(1.05)}
+.btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line-strong);font-size:13px;font-weight:500;color:var(--muted);background:var(--surface);display:inline-flex;align-items:center;gap:6px}
+.chip.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.chip .n{font-family:var(--mono);font-size:11px;opacity:.7}
+
+/* ---------- home ---------- */
+.hero{display:grid;gap:14px}
+.hero h2{font-size:26px;line-height:1.2}
+.hero .addr{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 12px;min-width:0}
+.stat b{display:block;font-family:var(--display);font-size:20px;line-height:1.1}
+.stat span{font-size:11.5px;color:var(--muted)}
+.rule{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.rule .k{font-family:var(--display);font-size:13px;color:var(--accent);padding-top:3px;white-space:nowrap}
+.formula{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:var(--display);font-size:15px}
+.formula .box{background:var(--surface-2);border-radius:8px;padding:6px 12px}
+.formula .op{color:var(--muted);font-size:13px}
+
+/* rings map */
+.rings{position:relative;width:100%;max-width:560px;margin:0 auto}
+.rings svg{width:100%;height:auto;display:block}
+.rings text{font-family:var(--body);font-size:9.5px;fill:var(--fg)}
+.rings .ring{fill:none;stroke:var(--line-strong);stroke-dasharray:3 4}
+.rings .ringlab{font-family:var(--mono);font-size:8.5px;fill:var(--muted)}
+.rings .dot{stroke:var(--surface);stroke-width:1.5}
+.rings .dot.bar{fill:var(--bar)}.rings .dot.food{fill:var(--jade)}
+.rings .hotel{fill:var(--accent)}
+.rings .zone{font-family:var(--mono);font-size:8px;fill:var(--faint);letter-spacing:.05em}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.zones{display:grid;gap:8px}
+.zone-row{display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:start;font-size:13.5px}
+.zone-row .t{font-family:var(--mono);font-size:12px;color:var(--accent);padding-top:2px}
+.zone-row b{font-weight:600}
+
+/* ---------- plan ---------- */
+.day-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--surface-2);padding:4px;border-radius:12px}
+.day-nav button{height:40px;border-radius:9px;font-weight:600;font-size:14px;color:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1}
+.day-nav button small{font-family:var(--mono);font-size:10px;font-weight:400;opacity:.8}
+.day-nav button.on{background:var(--surface);color:var(--fg);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.day{display:none;flex-direction:column;gap:14px}
+.day.on{display:flex}
+.day-title h3{font-size:20px}
+.day-title .theme{font-size:13.5px;color:var(--muted);margin-top:2px}
+.timeline{display:grid;gap:0}
+.tl{display:grid;grid-template-columns:58px 14px 1fr;gap:0 10px;padding-bottom:16px;position:relative}
+.tl:last-child{padding-bottom:0}
+.tl .when{font-family:var(--mono);font-size:11.5px;color:var(--muted);padding-top:3px;text-align:right;line-height:1.3}
+.tl .node{position:relative}
+.tl .node::before{content:"";position:absolute;left:5px;top:8px;bottom:-16px;width:2px;background:var(--line)}
+.tl:last-child .node::before{display:none}
+.tl .node::after{content:"";position:absolute;left:1px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--surface)}
+.tl.alt .node::after{background:var(--surface);border:2px solid var(--line-strong)}
+.tl .body{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 12px}
+.tl .body h4{font-size:14.5px;font-weight:700;font-family:var(--body)}
+.tl .body p{font-size:13.5px;color:var(--muted);margin-top:3px}
+.tl .body .links{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.plink{font-size:12px;font-family:var(--mono);color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:6px;border:0}
+.meal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.meal{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 12px;font-size:13.5px}
+.meal .l{font-family:var(--mono);font-size:11px;color:var(--jade);letter-spacing:.04em}
+.meal .n{font-weight:600;margin-top:2px}
+.meal .d{color:var(--muted);font-size:12.5px;margin-top:2px}
+
+/* ---------- places ---------- */
+.toolbar{display:flex;flex-direction:column;gap:10px}
+.search{position:relative}
+.search input{width:100%;height:42px;border-radius:12px;border:1px solid var(--line-strong);background:var(--surface);padding:0 14px 0 38px;font:inherit;font-size:14px;color:var(--fg)}
+.search svg{position:absolute;left:12px;top:12px;width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round}
+.day-pick{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
+.day-pick .seg{display:inline-flex;background:var(--surface-2);border-radius:9px;padding:3px;gap:2px}
+.day-pick .seg button{height:28px;padding:0 10px;border-radius:7px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.day-pick .seg button.on{background:var(--surface);color:var(--fg);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.place-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.pc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;gap:9px;text-align:left;width:100%;position:relative;transition:transform .12s ease,box-shadow .12s ease}
+.pc:hover{box-shadow:var(--shadow);transform:translateY(-1px)}
+.pc .top{display:flex;align-items:flex-start;gap:10px}
+.pc .cat{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;flex:none}
+.pc .cat.bar{background:var(--bar-soft);color:var(--bar)}.pc .cat.food{background:var(--jade-soft);color:var(--jade)}
+.pc .cat svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pc .names{min-width:0;flex:1}
+.pc .names b{display:block;font-size:15.5px;font-weight:600;line-height:1.3}
+.pc .names span{display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc .walk{font-family:var(--mono);font-size:12px;color:var(--fg);background:var(--surface-2);padding:3px 8px;border-radius:6px;white-space:nowrap;flex:none}
+.pc .role{font-size:13.5px;color:var(--fg)}
+.pc .meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.pc .hrs{font-family:var(--mono);font-size:12px}
+.pc .hrs.closed{color:var(--accent);font-weight:500}
+.pc .hrs.conf{color:var(--amber)}
+.pc .fav{position:absolute;top:10px;right:10px;width:30px;height:30px;display:grid;place-items:center;border-radius:8px;color:var(--faint)}
+.pc .fav svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+.pc .fav.on{color:var(--amber)}.pc .fav.on svg{fill:currentColor}
+.empty{padding:32px 16px;text-align:center;color:var(--muted);font-size:14px}
+
+/* ---------- detail sheet ---------- */
+.sheet-bg{position:fixed;inset:0;background:rgba(10,12,14,.45);z-index:20;opacity:0;pointer-events:none;transition:opacity .2s}
+.sheet-bg.open{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;top:max(24px,env(safe-area-inset-top,0px));z-index:21;background:var(--bg);border-radius:18px 18px 0 0;transform:translateY(104%);transition:transform .28s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;overflow:hidden}
+.sheet.open{transform:none}
+@media (min-width:900px){.sheet{left:50%;right:auto;width:min(720px,calc(100% - 80px));transform:translate(-50%,104%);top:40px;bottom:40px;border-radius:18px}.sheet.open{transform:translate(-50%,0)}}
+.sheet-h{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 16px 10px;display:flex;align-items:center;gap:10px;z-index:1}
+.sheet-h .grab{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:36px;height:4px;border-radius:2px;background:var(--line-strong)}
+.sheet-h h3{font-size:16px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:6px}
+.sheet-h .x{width:34px;height:34px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;margin-top:6px}
+.sheet-h .x svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round}
+.sheet-b{overflow-y:auto;padding:16px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:16px;-webkit-overflow-scrolling:touch}
+.d-head{display:grid;gap:8px}
+.d-head .tags{display:flex;gap:6px;flex-wrap:wrap}
+.d-head h2{font-size:24px}
+.d-head .alt{font-size:14px;color:var(--muted)}
+.d-actions{display:flex;gap:8px;flex-wrap:wrap}
+.d-sec{display:grid;gap:8px}
+.d-sec h4{font-size:12px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.hours-tbl{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.hours-tbl .h{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:6px 4px;text-align:center;min-width:0}
+.hours-tbl .h b{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:400}
+.hours-tbl .h span{display:block;font-family:var(--mono);font-size:10.5px;margin-top:2px;line-height:1.3;word-break:break-all}
+.hours-tbl .h.closed span{color:var(--accent)}
+.hours-tbl .h.trip{border-color:var(--accent);background:var(--accent-soft)}
+.hours-tbl .h.unk span{color:var(--faint)}
+.review{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px;display:grid;gap:6px;font-size:13.5px}
+.review .who{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.review .who b{font-weight:600}
+.review .who span{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.review .pm{display:grid;gap:4px}
+.review .pm div{display:grid;grid-template-columns:18px 1fr;gap:6px}
+.review .pm .p{color:var(--jade);font-weight:600}.review .pm .m{color:var(--amber);font-weight:600}
+.review .w{font-size:12px;color:var(--muted);border-top:1px dashed var(--line);padding-top:6px}
+.review a{font-size:12px;font-family:var(--mono);color:var(--accent);word-break:break-all}
+.src{display:grid;gap:6px}
+.src a{display:flex;gap:8px;align-items:baseline;font-size:13px;text-decoration:none;padding:8px 10px;background:var(--surface);border:1px solid var(--line);border-radius:8px;min-width:0}
+.src a .l{font-family:var(--mono);font-size:11px;color:var(--muted);flex:none;width:70px}
+.src a .u{color:var(--accent);word-break:break-all;flex:1;min-width:0;font-size:12.5px}
+.conf-row{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ---------- plan B ---------- */
+.acc{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.acc summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary .ic{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--surface-2);flex:none}
+.acc summary .ic svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.acc summary .chev{margin-left:auto;width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2;transition:transform .2s}
+.acc[open] summary .chev{transform:rotate(180deg)}
+.acc .in{padding:0 16px 16px;display:grid;gap:10px}
+.check{display:grid;gap:6px}
+.check label{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);font-size:13.5px;cursor:pointer}
+.check input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--accent);flex:none}
+.check label.done{color:var(--muted);text-decoration:line-through}
+.budget{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.budget .b{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 12px}
+.budget .b small{display:block;font-size:11.5px;color:var(--muted)}
+.budget .b b{font-family:var(--mono);font-size:16px;font-weight:500}
+
+/* ---------- verify ---------- */
+.tally{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.tally .t{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 12px}
+.tally .t b{font-family:var(--mono);font-size:18px;font-weight:500;display:block}
+.tally .t span{font-size:12px;color:var(--muted);line-height:1.4;display:block}
+.excl{display:grid;gap:8px}
+.excl .e{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px;font-size:13.5px}
+.excl .e b{display:block;font-weight:600}
+.excl .e p{color:var(--muted);margin-top:3px}
+.footnote{font-size:12px;color:var(--muted);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="topbar-in">
+      <div class="brand">
+        <h1>Kau U Fong 3박 가이드</h1>
+        <div class="sub">Lan Kwai Fong Hotel @ Kau U Fong · 성인 남성 3명 도보 생활권</div>
+      </div>
+      <span class="pill-date">조사 2026-10-22</span>
+      <nav class="desk-tabs" aria-label="화면"><div class="tabbar-in" id="deskTabs"></div></nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ================= HOME ================= -->
+    <section class="screen active" id="s-home" data-screen="home">
+      <div class="hero">
+        <span class="eyebrow">결론 · Conclusion</span>
+        <h2>란콰이퐁 클럽 위가 아니라, 로컬 골목과 소호를 모두 걸어 쓰는 위치</h2>
+        <p class="lead">식사·펍은 <strong>SoHo</strong>, 유명 칵테일은 <strong>Bar Leone 또는 COA 중 1~2곳</strong>, 음악은 <strong>Iron Fairies</strong>, 파티 거리 구경은 실제 <strong>LKF</strong>로 나눈다. 각 밤 사이 호텔에서 쉬거나 옷을 갈아입고 다시 나갈 수 있는 것이 이 숙소를 고른 보상이다.</p>
+        <p class="addr">호텔 공식 주소 3 Kau U Fong, Central · 12-04(금) 체크인 ~ 12-07(월) 체크아웃 가정</p>
+      </div>
+
+      <div class="card">
+        <span class="eyebrow">하루 공식 · Nightly formula</span>
+        <div class="formula" style="margin-top:8px">
+          <span class="box">저녁 1곳</span><span class="op">+</span>
+          <span class="box">주요 술집 1곳</span><span class="op">+</span>
+          <span class="box">기분 좋으면 짧은 2차</span>
+        </div>
+        <p class="small muted" style="margin-top:10px">유명 바 4곳을 매일 순례하지 않는다. 한밤에 여러 바를 쫓지 않는다.</p>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat"><b>15</b><span>조사 장소 (바 8 · 식당 7)</span></div>
+        <div class="stat"><b>2~18<small style="font-size:12px">분</small></b><span>호텔 기준 도보 추정</span></div>
+        <div class="stat"><b>13/15</b><span>Google 업장 식별자 확보</span></div>
+      </div>
+
+      <div class="card">
+        <div class="sec-h"><h2>도보 생활권 개념도</h2><span class="note">추정 도보시간 기준 · 실측 지도 아님</span></div>
+        <div class="rings" id="rings" style="margin-top:10px"></div>
+        <div class="legend" style="margin-top:6px">
+          <span><i style="background:var(--accent)"></i>호텔</span>
+          <span><i style="background:var(--bar)"></i>바 · 펍</span>
+          <span><i style="background:var(--jade)"></i>식당 · 카페</span>
+        </div>
+        <p class="footnote" style="margin-top:8px">링 위치는 가이드의 주소·지리 기반 추정 도보시간 중간값이며, 방향(각도)은 거리 구역별로 묶어 배치한 개념 표현이다. 언덕과 계단, 신호, 혼잡을 반영해 여유를 둔다. 장소를 누르면 상세가 열린다.</p>
+      </div>
+
+      <div class="card">
+        <div class="sec-h"><h2>생활권 읽기</h2></div>
+        <div class="zones" style="margin-top:10px">
+          <div class="zone-row"><span class="t">1~5분</span><div><b>Kau U Fong · Gough St · Shin Hing St</b><br><span class="muted small">가벼운 식사, 호텔 복귀, COA 대기 확인</span></div></div>
+          <div class="zone-row"><span class="t">5~10분</span><div><b>Peel · Staunton · Elgin · Graham St (SoHo)</b><br><span class="muted small">식사·펍·사람 구경. 가장 많이 쓸 구역</span></div></div>
+          <div class="zone-row"><span class="t">5~10분</span><div><b>Hollywood Rd · Old Bailey · Tai Kwun 주변</b><br><span class="muted small">칵테일·음악·낮 산책 연결</span></div></div>
+          <div class="zone-row"><span class="t">8~12분</span><div><b>D’Aguilar St · Lan Kwai Fong · Wyndham St</b><br><span class="muted small">금토 밤 밀집한 파티 분위기</span></div></div>
+        </div>
+        <div class="callout" style="margin-top:12px">호텔 이름만 보고 LKF 파티 골목 한가운데라고 생각하면 안 된다. 계단과 언덕이 있고, 밤 에스컬레이터가 하행해 줄 것으로 기대하지 말 것.</div>
+      </div>
+
+      <div class="card flat">
+        <span class="eyebrow">이 가이드의 전제</span>
+        <ul class="list-dot" style="margin-top:8px">
+          <li>날짜는 재확정하지 않았으므로 금·토·일의 활용법으로 읽어도 된다. 예약 완료 여부는 확인하지 않음.</li>
+          <li>도보시간은 주소·지리 기반 계획값이지 지도 경로 계산 결과가 아니다.</li>
+          <li>현재 공개 운영정보는 12월 특별영업·공연·예약좌석을 보장하지 않는다.</li>
+          <li>이번 작업은 조사뿐이며 예약·문의 전송·카드 입력·결제는 없었다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= PLAN ================= -->
+    <section class="screen" id="s-plan" data-screen="plan">
+      <div class="sec-h"><h2>3박 활용 설계</h2><span class="note">시간은 추천 동선이지 확정표 아님</span></div>
+      <div class="day-nav" id="dayNav">
+        <button data-day="fri" class="on">금<small>12-04</small></button>
+        <button data-day="sat">토<small>12-05</small></button>
+        <button data-day="sun">일<small>12-06</small></button>
+      </div>
+
+      <div class="day on" data-day="fri">
+        <div class="day-title"><h3>동네 파악 + 편한 맥주 + LKF</h3><p class="theme">도착일. 늦게 도착하면 낮 코스는 생략.</p></div>
+        <div class="timeline">
+          <div class="tl"><div class="when">도착<br>체크인</div><div class="node"></div><div class="body"><h4>호텔에서 쉬고 근처에서 이른 저녁</h4><p>도착·체크인 시간이 여유롭다면. 늦으면 바로 저녁으로.</p></div></div>
+          <div class="tl"><div class="when">저녁</div><div class="node"></div><div class="body"><h4>Ho Lee Fook 또는 The Globe 식사 + 맥주</h4><p>The Globe는 식사와 맥주를 묶거나 식후에 들른다. 금요일 공식 음식 마감 22:45, 술집 영업과 주방 마감은 다름.</p><div class="links"><button class="plink" data-open="holeefook">Ho Lee Fook</button><button class="plink" data-open="globe">The Globe</button></div></div></div>
+          <div class="tl"><div class="when">식후</div><div class="node"></div><div class="body"><h4>Graham → Staunton → Elgin/Peel 산책</h4><p>분위기를 본다. 모든 거리를 빠짐없이 도는 관광 미션으로 만들지 않는다.</p></div></div>
+          <div class="tl alt"><div class="when">22~23시<br>선택</div><div class="node"></div><div class="body"><h4>실제 LKF까지 가서 20~30분 거리 분위기 보고 복귀</h4><p>기분 좋으면. 공연·이벤트 확정표 아님.</p></div></div>
+          <div class="tl alt"><div class="when">심야<br>백업</div><div class="node"></div><div class="body"><h4>Tsui Wah Central</h4><p>금토 공식 24시간 안내. 맛집 순위가 아니라 영업시간 백업.</p><div class="links"><button class="plink" data-open="tsuiwah">Tsui Wah</button></div></div></div>
+        </div>
+      </div>
+
+      <div class="day" data-day="sat">
+        <div class="day-title"><h3>대표 칵테일 + 저녁 + 음악</h3><p class="theme">낮술·저녁술을 모두 해야 한다는 뜻이 아니다.</p></div>
+        <div class="timeline">
+          <div class="tl"><div class="when">08~09시</div><div class="node"></div><div class="body"><h4>Sing Heung Yuen 토마토국수 아침</h4><p>일요일 휴무 안내가 있어 토요일 배치. 노천·합석.</p><div class="links"><button class="plink" data-open="singheungyuen">Sing Heung Yuen</button></div></div></div>
+          <div class="tl"><div class="when">점심<br>14~17시</div><div class="node"></div><div class="body"><h4>Kau Kee 소고기국수</h4><p>일요일 휴무. 중간휴식이 불확실하므로 현장 확인 후 이용. 안전한 계획은 14~17시.</p><div class="links"><button class="plink" data-open="kaukee">Kau Kee</button></div></div></div>
+          <div class="tl"><div class="when">15시<br>개점</div><div class="node"></div><div class="body"><h4>Bar Leone 개점 무렵 1잔</h4><p>현재 금토 15시 개점 안내. 낮 일정이 근처라면 노리고, 대기가 길면 즉시 다른 일정으로 전환.</p><div class="links"><button class="plink" data-open="barleone">Bar Leone</button></div></div></div>
+          <div class="tl"><div class="when">저녁</div><div class="node"></div><div class="body"><h4>Yardbird 또는 Ho Lee Fook</h4><p>호텔에서 쉬었다가 저녁. Yardbird는 약 12~18분 추정, 일요일 휴무라 금토 후보.</p><div class="links"><button class="plink" data-open="yardbird">Yardbird</button><button class="plink" data-open="holeefook">Ho Lee Fook</button></div></div></div>
+          <div class="tl"><div class="when">밤</div><div class="node"></div><div class="body"><h4>Iron Fairies 음악</h4><p>음악을 즐기고 싶은 날의 중심 카드. 12월 해당일 밴드·공연시각·입장료·최소주문은 미확인이므로 고정된 공연시간으로 잡지 않는다.</p><div class="links"><button class="plink" data-open="ironfairies">Iron Fairies</button></div></div></div>
+          <div class="tl alt"><div class="when">대안</div><div class="node"></div><div class="body"><h4>음악보다 대화가 좋으면 The Globe / SoHo 펍</h4><div class="links"><button class="plink" data-open="globe">The Globe</button><button class="plink" data-open="stauntons">Staunton’s</button></div></div></div>
+        </div>
+      </div>
+
+      <div class="day" data-day="sun">
+        <div class="day-title"><h3>동네 식사 + 가까운 한 잔</h3><p class="theme">전날 피로에 따라 단순하게. 다음날 월요일 COA 휴무.</p></div>
+        <div class="timeline">
+          <div class="tl"><div class="when">아침<br>점심</div><div class="node"></div><div class="body"><h4>Bakehouse 포장 또는 Tsim Chai Kee 점심</h4><p>국수·차찬텡으로 단순하게. Bakehouse는 좌석 없는 포장 전용.</p><div class="links"><button class="plink" data-open="bakehouse">Bakehouse</button><button class="plink" data-open="tsimchaikee">Tsim Chai Kee</button></div></div></div>
+          <div class="tl"><div class="when">18시</div><div class="node"></div><div class="body"><h4>COA 대기 상태 보고 결정</h4><p>도어에서 호출수단·복귀 제한을 확인한 경우에만 근처 식사를 대기에 연결. 일요일 현재 00시 마감 안내.</p><div class="links"><button class="plink" data-open="coa">COA</button></div></div></div>
+          <div class="tl"><div class="when">저녁</div><div class="node"></div><div class="body"><h4>Ho Lee Fook 또는 The Globe</h4><div class="links"><button class="plink" data-open="holeefook">Ho Lee Fook</button><button class="plink" data-open="globe">The Globe</button></div></div></div>
+          <div class="tl alt"><div class="when">대안</div><div class="node"></div><div class="body"><h4>아가베 취향이 아니면 Penicillin 또는 편한 펍</h4><p>The Old Man 일요일 마감은 공식 채널 충돌(웹 00시 / IG 01시)이 있어 심야 대체로 고정하지 않는다.</p><div class="links"><button class="plink" data-open="penicillin">Penicillin</button><button class="plink" data-open="oldman">The Old Man</button></div></div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="sec-h"><h2>식사 최종 배치</h2></div>
+        <div class="meal-grid" style="margin-top:10px">
+          <div class="meal"><div class="l">금 저녁</div><div class="n">Ho Lee Fook / The Globe</div><div class="d">Ho Lee Fook 예약 경로 확인, 좌석 미확인</div></div>
+          <div class="meal"><div class="l">토 아침</div><div class="n">Sing Heung Yuen</div><div class="d">일요일 휴무라 토요일</div></div>
+          <div class="meal"><div class="l">토 점심</div><div class="n">Kau Kee</div><div class="d">중간휴식 불확실, 현장 확인</div></div>
+          <div class="meal"><div class="l">토 저녁</div><div class="n">Yardbird / Ho Lee Fook</div><div class="d">Yardbird 일요일 휴무</div></div>
+          <div class="meal"><div class="l">일 점심</div><div class="n">Bakehouse 포장 / Tsim Chai Kee</div><div class="d">Bakehouse는 포장만</div></div>
+          <div class="meal"><div class="l">일 저녁</div><div class="n">Ho Lee Fook / The Globe</div><div class="d">—</div></div>
+          <div class="meal"><div class="l">금토 심야</div><div class="n">Tsui Wah Central</div><div class="d">공식 24시간 안내. 일요일은 자정 마감이라 제외</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PLACES ================= -->
+    <section class="screen" id="s-places" data-screen="places">
+      <div class="sec-h"><h2>장소 15곳</h2><span class="note" id="placeCount"></span></div>
+      <div class="toolbar">
+        <div class="search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input type="search" id="q" placeholder="이름, 거리, 메뉴로 찾기" autocomplete="off">
+        </div>
+        <div class="chips" id="catChips">
+          <button class="chip on" data-cat="all">전체 <span class="n">15</span></button>
+          <button class="chip" data-cat="bar">바 · 펍 <span class="n">8</span></button>
+          <button class="chip" data-cat="food">식당 <span class="n">7</span></button>
+          <button class="chip" data-cat="pri">우선 추천</button>
+          <button class="chip" data-cat="fav">★ 내 선택</button>
+        </div>
+        <div class="day-pick">
+          <span>영업시간 보기</span>
+          <div class="seg" id="daySeg">
+            <button data-d="fri" class="on">금</button><button data-d="sat">토</button><button data-d="sun">일</button><button data-d="mon">월</button>
+          </div>
+          <span class="small">공식 안내 기준 · 12월 변동 미반영</span>
+        </div>
+      </div>
+      <div class="place-list" id="placeList"></div>
+    </section>
+
+    <!-- ================= PLAN B ================= -->
+    <section class="screen" id="s-planb" data-screen="planb">
+      <div class="sec-h"><h2>대비와 원칙</h2><span class="note">만석 · 비 · 소음 · 예산 · 예약</span></div>
+
+      <details class="acc" open>
+        <summary><span class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>만석일 때<svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="in">
+          <ul class="list-dot">
+            <li><b>Bar Leone 만석</b>: 개점 전략을 못 쓰면 대기시간에 매달리지 말고 SoHo 식사부터. 근처 The Old Man도 작아 만석 가능하므로 좌석 보장 대체가 아님.</li>
+            <li><b>COA 만석</b>: 호텔이 가까운 장점을 쓰되 호출정책을 먼저 확인. 대기가 여행의 중심이 되면 포기.</li>
+            <li><b>Iron Fairies</b>: 금토 혼잡·입장료·좌석 최소주문·공연시간은 해당 날짜 공식 재확인.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></span>음악이 너무 시끄러울 때<svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="in"><ul class="list-dot"><li>Iron Fairies / Pontiac 대신 The Globe에서 식사·대화. 펍도 주말·경기 때는 시끄러울 수 있음.</li><li>Staunton’s 테라스는 흡연 연기를 직접 맞았다는 실방문 사례가 있어, 담배가 싫으면 실내 고려.</li></ul></div>
+      </details>
+
+      <details class="acc">
+        <summary><span class="ic"><svg viewBox="0 0 24 24"><path d="M16 13v8M8 13v8M12 15v8M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"/></svg></span>비가 올 때<svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="in"><ul class="list-dot"><li>야외 거리 구경을 줄이고 식사 + 실내 1곳.</li><li>계단 골목의 최단거리 대신 도로 경로를 확인. 강한 비에는 짧은 택시도 선택.</li><li>Sing Heung Yuen은 노천이라 비 오는 날은 불리.</li></ul></div>
+      </details>
+
+      <details class="acc">
+        <summary><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></span>귀가 경로<svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="in"><ul class="list-dot"><li>Hollywood Road 등 도로축을 활용하되, 계단이 전혀 없는 확정 경로라고 보장하지 않는다.</li><li>밤 에스컬레이터가 하행해 줄 것으로 기대하지 말 것.</li><li>식당과 바의 라스트오더를 분리해서 생각. 일요일 문 닫는 식당은 금토로 옮기고, 일요일은 대체 식사를 둔다.</li></ul></div>
+      </details>
+
+      <div class="card">
+        <div class="sec-h"><h2>예산 참고</h2><span class="note">계획용 여유 예산 · 현행 견적 아님</span></div>
+        <div class="budget" style="margin-top:10px">
+          <div class="b"><small>칵테일 1인 1잔</small><b>HKD 125~165</b></div>
+          <div class="b"><small>세 명 한 라운드</small><b>HKD 375~495</b></div>
+        </div>
+        <p class="footnote" style="margin-top:10px">2026년 방문 사례 기반이며 실제 메뉴·서비스료로 달라진다. 식사·술 예산은 술 양에 따라 크게 달라져 총액을 확정 견적처럼 제시하지 않는다. 메뉴 확정값이 없는 곳은 가격 확인 필요로 표시했다.</p>
+      </div>
+
+      <div class="card">
+        <div class="sec-h"><h2>예약 원칙</h2></div>
+        <dl class="kv" style="margin-top:10px">
+          <dt>테이블 예약 검토</dt><dd>The Globe, Staunton’s (공식 예약 경로 있음)</dd>
+          <dt>워크인</dt><dd>Bar Leone(최대 6명), COA(waitlist), The Old Man, Penicillin</dd>
+          <dt>조건 확인 후</dt><dd>Iron Fairies: 날짜별 최소주문·보증금 확인 후 판단</dd>
+          <dt>식당 예약</dt><dd>Ho Lee Fook → SevenRooms, Yardbird → Tock. 좌석 재고·보증·취소조건 미확인</dd>
+        </dl>
+      </div>
+
+      <div class="card">
+        <div class="sec-h"><h2>현장 확인 체크리스트</h2><span class="note">이 기기에만 저장</span></div>
+        <div class="check" id="checklist" style="margin-top:10px"></div>
+      </div>
+    </section>
+
+    <!-- ================= VERIFY ================= -->
+    <section class="screen" id="s-verify" data-screen="verify">
+      <div class="sec-h"><h2>검증 범위와 출처</h2><span class="note">확인된 것과 아닌 것의 구분</span></div>
+
+      <div class="tally">
+        <div class="t"><b>13 / 15</b><span>실제 Google 업장 식별자 확보. The Globe·The Pontiac은 공식 주소·좌표만</span></div>
+        <div class="t"><b>2 / 15</b><span>주소까지 Google 직접 또는 공식 지도 연결로 검증 (Bakehouse, Tsui Wah)</span></div>
+        <div class="t"><b>0 / 15</b><span>Google 리뷰 본문·별점 직접 열람. 모든 후기는 개인 블로그·매체 본문</span></div>
+        <div class="t"><b>1 / 15</b><span>현 지점 독립 후기 본문 미확보 (Tsui Wah Central)</span></div>
+      </div>
+
+      <div class="card">
+        <div class="sec-h"><h2>바 5곳 보강 집계</h2><span class="note">Globe · Bar Leone · Iron Fairies · COA · Pontiac</span></div>
+        <div class="tally" style="margin-top:10px">
+          <div class="t"><b>0 / 5</b><span>Google 상세 패널에서 상호·주소·리뷰를 직접 본 완료. 지도 shell만 표시됨</span></div>
+          <div class="t"><b>3 / 5</b><span>실제 사업체 식별자 확보: COA(공식 embed·버튼 일치), Bar Leone(실방문 embed CID), Iron Fairies(한국 방문글 2개 동일 Place ID)</span></div>
+          <div class="t"><b>2 / 5</b><span>공식 주소·좌표만 확보, 사업체 ID 미확보: The Globe, The Pontiac</span></div>
+        </div>
+        <dl class="kv" style="margin-top:12px">
+          <dt>후기 2개 독립</dt><dd>The Globe, Bar Leone, COA: 독립 방문 자료 2개씩</dd>
+          <dt>매체 2개</dt><dd>The Pontiac: 현지 전문매체 2개. 한국인 실방문 본문 미확보</dd>
+          <dt>1 + 제휴 1</dt><dd>Iron Fairies: 독립 한국 실방문 1개 + Trip.com 제휴 링크 있는 한국 후기 1개. 무광고 실방문 2개 요건 미충족</dd>
+          <dt>대체 카드 3곳</dt><dd>Penicillin 본문 2개, Staunton’s 독립 본문 1개, The Old Man은 2018 방문이라 최신성 매우 낮음</dd>
+        </dl>
+        <p class="footnote" style="margin-top:10px">‘핀 검증 전부 완료’가 아니라 COA 공식 식별자·좌표 확인 / Bar Leone·Iron Fairies 출처 식별자 확보 / Globe·Pontiac 공식 좌표만 확인으로 단계를 구분한다. 후기 2개를 무조건 맞춘 척하지 않는다.</p>
+      </div>
+
+      <div class="callout red"><b>중대 오연결</b> · The Iron Fairies 홍콩 공식 페이지의 지도 버튼이 발리 지점(좌표 -8.677, 115.155)으로 연결된다. 이 링크는 홍콩 여행에 사용 금지. 앱의 Iron Fairies 지도 버튼은 독립 한국 방문글 2개에서 일치한 홍콩 Place ID를 쓴다.</div>
+
+      <div class="card">
+        <div class="sec-h"><h2>읽는 법</h2></div>
+        <ul class="list-dot" style="margin-top:10px">
+          <li>밤문화는 앞선 조사자 결과를 회수하여 출처와 함께 보존. 식당은 재개 후 새 검증 파일로 보존.</li>
+          <li>공식 · 현지 플랫폼 · 한국인 후기의 확인 수준을 분리했다. 한국인 후기 한 작성자의 취향을 전체 평가로 확대하지 않는다.</li>
+          <li>지도 링크 중 ‘검색 링크’는 상호와 확인 주소로 만든 Google Maps 검색이며, 개별 업장 핀과 도보 경로를 모두 클릭 검증했다는 뜻이 아니다. ‘핀 링크’는 브라우저가 실제 반환한 업장 식별자다.</li>
+          <li>Google Maps 상세 패널·리뷰는 어느 장소도 렌더링되지 않았다. ‘구글 리뷰를 검증했다’고 읽지 말 것.</li>
+          <li>후기의 가격·대기시간·입장료는 당시 사례이며 현재 보장치가 아니다.</li>
+          <li>광고·협찬 표기를 발견하지 못했다는 것은 독립성을 보증한다는 뜻이 아니다.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="sec-h"><h2>신뢰도 표기</h2></div>
+        <div class="conf-row" style="margin-top:10px">
+          <span class="conf high"><i></i>high · 공식 본문 직접 확인</span>
+          <span class="conf mh"><i></i>medium-high · 복수 출처 일치</span>
+          <span class="conf medium"><i></i>medium · 단일 출처 또는 충돌</span>
+          <span class="conf low"><i></i>low · 과거 사례, 미확인</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="sec-h"><h2>중요 정정 · 범위 제외</h2></div>
+        <div class="excl" style="margin-top:10px">
+          <div class="e"><b>Wing Fat Seafood 榮發大排檔 — 상완 아님</b><p>구룡 Jordan / Temple Street 권역. 주소 Shop 6–8, G/F, Temporary Cooked Food Hawker Bazaar, 29–39 Woosung Street, Jordan. 호텔 도보 동네 코스에 넣지 말고 구룡 별도 일정. 2025-10-17 한국 실방문 본문은 오징어튀김·가리비·새우튀김 호평, 가리비 간이 강하고 요리가 느림. <a href="https://www.openrice.com/en/hongkong/r-wing-fat-seafood-jordan-guangdong-seafood-r705184/buffet" target="_blank" rel="noopener">OpenRice</a> · <a href="https://shinwoongs.tistory.com/2790" target="_blank" rel="noopener">한국 실방문</a></p></div>
+          <div class="e"><b>Lin Heung Lau 蓮香樓 — 2026년 5월 상완 이전</b><p>옛 160–164 Wellington Street 안내 재사용 금지. 관광청 원문 “2026年5月從中環老店遷至上環新址”, 새 주소 G/F, 1/F &amp; 2/F, Tung Ning Building, 249–253 Des Voeux Road Central. 공식 IG는 시범운영(06:00~24:00) 안내일 수 있어 12월 시간 보장 불가. 새 매장 한국인 실방문·메뉴·시간 검증 부족으로 최종 7곳에서 제외. <a href="https://www.discoverhongkong.com/tc/place-to-go/travel.guide-lin-heung-tea-house.html" target="_blank" rel="noopener">관광청</a> · <a href="https://www.instagram.com/reel/DYPMcHiJdOS" target="_blank" rel="noopener">공식 IG</a></p></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="sec-h"><h2>핵심 원출처</h2></div>
+        <div class="src" style="margin-top:10px">
+          <a href="https://www.dcollection.com/lan-kwai-fong-hotel-kau-u-fong/location" target="_blank" rel="noopener"><span class="l">호텔 위치</span><span class="u">dcollection.com/lan-kwai-fong-hotel-kau-u-fong/location</span></a>
+        </div>
+        <p class="footnote" style="margin-top:10px">밤문화 상세는 별도 파일 <span class="mono">2026-10-22-nightlife-verified.md</span>, 식당 상세는 <span class="mono">2026-10-22-food-verified.md</span>에 업장별 출처·시간·후기·지도가 보존되어 있다. 장소별 출처 링크는 각 장소 상세 화면에 모두 실었다.</p>
+      </div>
+
+      <div class="card flat">
+        <span class="eyebrow">조사 방법 요약</span>
+        <p class="small" style="margin-top:8px">공식 홈페이지·공식 Instagram 직접 읽기, 홍콩관광청·OpenRice·미쉐린·TimeOut 검색결과(snippet_only) 교차, 한국인·현지 실방문 본문 직접 읽기, 공식 지도 링크 추적과 Chromium Google Maps 도착 URL에서 업장명·식별자·좌표 판독. OpenRice·Tripadvisor 403, 일부 429로 반복 접속하지 않았다. 평점은 수집하지 않았다. 사용자·업체 메시지, 예약, 로그인, 결제 없음.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="tabbar" aria-label="화면">
+    <div class="tabbar-in" id="tabs"></div>
+  </nav>
+</div>
+
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet-h"><span class="grab"></span><h3 id="sheetTitle"></h3><button class="x" id="sheetClose" aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="sheet-b" id="sheetBody"></div>
+</div>
+
+<script>
+/* ============ DATA ============ */
+const DAYS = {mon:'월',tue:'화',wed:'수',thu:'목',fri:'금',sat:'토',sun:'일'};
+const H = (mon,tue,wed,thu,fri,sat,sun)=>({mon,tue,wed,thu,fri,sat,sun});
+const CLOSED='휴무', UNK='미확인';
+
+const PLACES = [
+/* ---------------- BARS ---------------- */
+{
+ id:'globe', cat:'bar', pri:true, name:'The Globe', alt:'편한 맥주와 식사 · 영국식 펍',
+ addr:'Garley Building, 45–53 Graham Street, Central', walk:[5,8], angle:190,
+ role:'세 명이 앉아서 맥주·안주·대화할 기본 카드. 파이·크래프트 맥주.',
+ hours:H('10:00~late','10:00~late','10:00~late','10:00~late','10:00~late (음식 ~22:45)','10:00~late','10:00~late'),
+ hoursNote:'공식 매일 10:00~late. 음식 12:00~21:45, 금요일 22:45까지. 해피아워 10:00~19:00. 날짜별 재확인.',
+ resv:'공식 테이블 예약 경로 있음. 좌석 재고 미확인.',
+ price:'현행 파인트 가격 확인 필요. 한국 후기 표본이 약해 현재 가격 근거로 쓰지 않음.',
+ order:'로컬 에일 + 파이 (현재 메뉴·재고 확인). 바텐더에게 맥주 취향을 말하고 추천받기.',
+ tips:['조용한 고급 바를 기대하면 다름. 스포츠 경기 때 소음·좌석 영향.','혼잡 시 직원의 맥주 지식 편차·주문 지연 지적(매체 리뷰).'],
+ reviews:[
+  {who:'바나나맨 (한국 실방문)',date:'2024-12-15',url:'https://m.blog.naver.com/soultv/223694410521',plus:'폭우를 피해 가족과 입장. 맥주 종류와 홍콩 에일 맛 호평. 영국식 실내·축구 시청 분위기.',minus:'직접적인 음식·서비스 불만은 기록 없음.',w:'협찬 고지 발견 못함, 독립성 보증 아님. 한국인 최신 후기 표본 약함.'},
+  {who:'Kate Springer, Condé Nast Traveler',date:'작성일 미표시',url:'https://www.cntraveler.com/bars/hong-kong/the-globe',plus:'현지 크래프트 맥주와 영국식 펍푸드. 닭고기·리크 파이, 감자튀김, 로컬 에일 제안.',minus:'혼잡 시 복잡, 직원 맥주 지식 편차·주문 지연.',w:'당시 탭 수·브랜드·메뉴를 현행 확정으로 인용하지 않음.'}
+ ],
+ pin:{level:'공식 주소·좌표만',text:'공식 사이트 위치 데이터 좌표 22.2823974, 114.1527349. 사업체 ID 미확보. 좌표 링크는 업장 핀 검증이 아님.'},
+ map:'https://www.google.com/maps/search/?api=1&query=The%20Globe%2045-53%20Graham%20Street%20Hong%20Kong', mapKind:'검색 링크',
+ conf:[['운영·시간','high'],['체험','medium'],['최신 가격','low']],
+ links:[['공식','https://www.theglobe.com.hk/'],['메뉴','https://www.theglobe.com.hk/menus'],['연락처','https://www.theglobe.com.hk/contact'],['좌표 링크','https://www.google.com/maps?q=22.2823974,114.1527349']]
+},
+{
+ id:'barleone', cat:'bar', pri:true, name:'Bar Leone', alt:'대표 칵테일 한 곳 · 이탈리안 cocktail popolari',
+ addr:'11–15 Bridges Street, Central', walk:[4,7], angle:300,
+ role:'유명 칵테일 1~2곳 중 하나. 칵테일뿐 아니라 접객·안주·편한 분위기가 장점이라는 두 작성자 일치.',
+ hours:H('17:00~00:00','17:00~00:00','17:00~00:00','17:00~00:00','15:00~00:00','15:00~00:00','17:00~00:00'),
+ hoursNote:'공식 IG: 월~목·일 17:00~00:00 / 금토 15:00~00:00. 웹은 마감 late 표기. 오르막·계단 있음.',
+ resv:'Walk-in only, 최대 일행 6명. 금토 15시 개점을 활용하되 대기·착석 보장 안 됨.',
+ price:'2026-06 한국 방문 사례 칵테일 HKD 120~150 +10%. 12월 확정 가격 아님.',
+ order:'유자 네그로니 또는 Olive Oil Sour + 모르타델라 포카치아 / 훈제 올리브 (메뉴 교체 가능).',
+ tips:['옛 후기의 금요일 17시 개점 줄서기 시각은 사용 금지. 현재는 금토 15시 안내.','유명세만 보고 짧은 방문을 보장하지 말 것. 만석이면 SoHo 식사부터.','같은 계열 Elderflower / Sherry 메뉴에는 개인 선호차가 있음.'],
+ reviews:[
+  {who:'DEPE (한국 실방문)',date:'2026-06-04 · 5월 금요일 방문',url:'https://depe.tistory.com/290',plus:'접객, 아늑한 이탈리안 빈티지 분위기, 유자 네그로니·올리브오일 사워·모르타델라 포카치아·훈제 올리브 호평.',minus:'Golden Girl은 개인 취향 불일치. 오르막 계단, 개점 전 긴 줄, 바에서 먼 창가 좌석.',w:'제공 고지 발견 못함. 한 명 표본.'},
+  {who:'Crystaltonic, 88 Bamboo (독립 매체 실방문)',date:'2025-04-07 · 3월 목요일 22시경',url:'https://88bamboo.co/blogs/escapades/a-study-of-bar-leone-the-cocktail-popolari-finds-its-spiritual-home-in-hong-kong',plus:'30분 대기 후 입장. 편안한 80년대 음악, 따뜻한 서비스. Appletini·Bicicletta Spritz, Goldenboy도 접근성 좋음.',minus:'늦게 방문해 티라미수 품절. 긴 대기.',w:'눈에 띄는 제공 고지 없음. 매체 상업성까지 배제했다는 뜻은 아님.'}
+ ],
+ pin:{level:'출처 식별자 확보',text:'실방문 Google embed의 feature ID 0x34040165b08f2cab:0x4f2e798736709b13, 좌표 22.2835238, 114.1509492, CID 5705631399565892371. Google 상세 패널·주소 미로드. 공식 사이트는 이번 요청에서 HTML이 비어 최신 주소 본문 재확인 못함.'},
+ map:'https://www.google.com/maps?cid=5705631399565892371', mapKind:'핀 링크 (CID)',
+ conf:[['운영·정책','high'],['체험 교차','mh'],['Google 상세','low']],
+ links:[['공식','https://www.barleonehk.com/'],['Instagram','https://www.instagram.com/barleonehk/'],['검색 링크','https://www.google.com/maps/search/?api=1&query=Bar%20Leone%2011-15%20Bridges%20Street%20Hong%20Kong']]
+},
+{
+ id:'ironfairies', cat:'bar', pri:true, name:'The Iron Fairies', alt:'라이브·DJ · 나비 장식의 음악 라운지',
+ addr:'LG/F, 1–13 Hollywood Road, Central', walk:[7,10], angle:140,
+ role:'음악을 즐기고 싶은 날의 중심 카드. 세 명의 밤 중 음악·분위기용 1회. 조용한 대화·가성비 칵테일 최우선은 아님.',
+ hours:H('18:00~late','18:00~late','18:00~late','18:00~late','18:00~late','18:00~late','18:00~late'),
+ hoursNote:'공식 매일 18:00~late. 라이브·DJ 운영하나 12월 공연시각·입장료 미확인.',
+ resv:'예약 경로 있음(reserveyourvenue). 최소주문·보증금·좌석은 날짜별 조건 미확인. 패키지 주문은 세 명에게 기본 추천하지 않음.',
+ price:'낱잔 가격 확인 필요. 과거 토요일 HKD 250 + 1 drink 입장 사례는 현재 조건으로 사용 금지.',
+ order:'후기상 Old Man’s Sour(망고 피스코·유자·레몬) 호평. 현행 메뉴 확인.',
+ tips:['잔을 비운 후 추가 주문을 안 하면 앉아 있을 수 없다는 직원 안내 사례. 오래 자리만 지키는 곳 아님.','토요일 인파로 움직이기·화장실 가기 어려웠다는 사례. 두 구역, 라이브 팝송, EDM 클럽보다는 음악 라운지.','공식 HK 페이지 지도 버튼은 발리 지점으로 연결됨. 아래 지도 버튼은 홍콩 Place ID 사용.'],
+ reviews:[
+  {who:'이유하나 (한국 독립 실방문)',date:'2024-02-27',url:'https://m.blog.naver.com/leeyouhana/223367044514',plus:'동화 같은 나비·철요정 장식, 재즈 라이브. Old Man’s Sour 호평.',minus:'잔을 비운 후 추가 주문하지 않으면 앉아 있을 수 없다는 안내가 아쉬움.',w:'제공 고지 발견 못함. 공식 IG 사진은 작성자가 구분.'},
+  {who:'h___j___e___da (한국 실방문)',date:'2025-05-22 게시 · 방문일 확정 불가',url:'https://m.blog.naver.com/h___j___e___da/223874239788',plus:'라이브 팝송, 두 구역, 음악 라운지 느낌.',minus:'토요일 인파로 이동·화장실 어려움. 당시 HKD 250 + 1 drink 입장 사례(현재 조건 아님).',w:'Trip.com 제휴 링크 반복으로 낮은 가중치. 독립 무광고 표본으로 세지 않음.'}
+ ],
+ pin:{level:'출처 식별자 확보 (주의)',text:'홍콩 Place ID ChIJr-wKP3sABDQR7Mz6XkgCCpA가 독립 한국 방문글 2개에서 일치, feature 0x3404007b3f0aecaf:0x900a02485efaccec, 명칭 The Iron Fairies Hong Kong 보존 확인. 상세 주소·좌표는 로드되지 않아 미검증. 공식 지도 버튼(maps.app.goo.gl/zBCCuSdt93eywbE57)은 발리 지점으로 리디렉트되므로 사용 금지.'},
+ map:'https://www.google.com/maps/search/?api=1&query=The%20Iron%20Fairies%20Hong%20Kong&query_place_id=ChIJr-wKP3sABDQR7Mz6XkgCCpA', mapKind:'Place ID 링크',
+ conf:[['운영','high'],['공연·낱잔 가격','low'],['식별자','medium']],
+ links:[['공식','https://www.theironfairies.com.hk/'],['이벤트','https://www.theironfairies.com.hk/events/'],['메뉴','https://www.theironfairies.com.hk/menus'],['예약','https://reserveyourvenue.com/iron-fairies-hk'],['글로벌 공식','https://www.theironfairies.com/']]
+},
+{
+ id:'coa', cat:'bar', pri:true, name:'COA', alt:'호텔 가까운 아가베 전문 바',
+ addr:'Shop A, LG/F Wah Shin House, 6–10 Shin Hing Street, Central', walk:[2,4], angle:20,
+ role:'호텔에서 가장 가까운 유명 칵테일 바. 메스칼·데킬라 또는 산미·향신료 취향에 적합. 싫어하면 필수 아님.',
+ hours:H(CLOSED,'18:00~00:00','18:00~00:00','18:00~00:00','18:00~01:00','18:00~01:00','18:00~00:00'),
+ hoursNote:'공식 월 휴무 / 화~목·일 18:00~00:00 / 금토 18:00~01:00. 체크아웃일 월요일은 휴무.',
+ resv:'예약 불가, walk-in / waitlist. 호출·복귀 시간과 연락수단을 현장 확인. 근처 식사 중 대기 가능 여부를 먼저 확인.',
+ price:'2026-06 한국 방문 사례 HKD 128/잔 +10%. 현재 확정 가격 아님.',
+ order:'Coconut Milk Punch부터 검토. 스파이시·고산미 메뉴는 취향 확인. 취향을 먼저 말하고 추천받기.',
+ tips:['대기가 여행의 중심이 되면 포기. 18:30 도착 40~50분 대기, 19시 넘어 약 3시간 대기 사례 모두 과거 단일 사례.','공식 병제품 설명(coconut-milk-punch-125ml)은 맛 참고용이지 바의 현행 1잔 가격이 아님.'],
+ reviews:[
+  {who:'DEPE (한국 실방문)',date:'2026-06-05',url:'https://depe.tistory.com/291',plus:'Coconut Milk Punch 재료별 개성, 접객·설명 호평.',minus:'18:30 도착 후 40~50분 대기. Pepper Smash는 신맛이 너무 강해 불호.',w:'제공 고지 발견 못함. 바로 앞 카우키 식사로 대기를 활용했다고 기록하나 현재 호출·복귀 정책 보장 아님.'},
+  {who:'Rylie, Lemon8 (영어 개인 실방문)',date:'2023-12-21',url:'https://www.lemon8-app.com/@rxsquare/7314665925624545794?region=sg',plus:'Coconut Milk Punch·La Paloma de Oaxaca·Ancho Highball, 친절한 설명.',minus:'19시 넘어 41팀 앞, 약 3시간 후 입장. 맛은 좋지만 대기 때문에 자주 갈 필요는 못 느낌.',w:'오래된 단일 사례. 지금 대기시간 추정 금지. 본문 뒤 자동요약·추천피드는 근거에서 제외.'}
+ ],
+ pin:{level:'공식 식별자·좌표 확인',text:'공식 embed feature 0x3404007c7773ffff:0xb8dd65f0dc2837f6, 좌표 22.2840082, 114.1520992. 한국 실방문 embed와 일치. 공식 최신 지도 버튼이 같은 ID·좌표로 리디렉트되는 것을 확인. 같은 페이지의 옛 링크는 다른 ID(0xde069ebbd9e2e00e)로 풀려 새 링크 우선. Google 상세 패널 미로드.'},
+ map:'https://www.google.com/maps/place/COA/@22.2840082,114.1520992,17z/data=!4m6!3m5!1s0x3404007c7773ffff:0xb8dd65f0dc2837f6!8m2!3d22.2840082!4d114.1520992!16s%2Fg%2F11hbgptkr0', mapKind:'핀 링크 (공식 리디렉트 확인)',
+ conf:[['운영·정책','high'],['후기','medium'],['Google 상세','low']],
+ links:[['공식','https://coa.com.hk/'],['공식 지도 버튼 (원 링크)','https://maps.app.goo.gl/8wR8VMbD74EDpU2v8'],['공식 옛 링크 (다른 ID, 사용 안 함)','https://goo.gl/maps/zuX7BHQV19H2'],['병제품 설명 (맛 참고용)','https://coa.com.hk/product/coconut-milk-punch-125ml/'],['OpenRice','https://www.openrice.com/en/hongkong/r-coa-central-western-wine-r552984'],['검색 링크','https://www.google.com/maps/search/?api=1&query=COA%206-10%20Shin%20Hing%20Street%20Hong%20Kong']]
+},
+{
+ id:'pontiac', cat:'bar', pri:false, name:'The Pontiac', alt:'록 다이브바 · 시끌벅적',
+ addr:'13 Old Bailey Street, Central', walk:[7,10], angle:160,
+ role:'흥겨운 록·다이브바를 원할 때. 세 명이 조용히 앉아 이야기할 기본 카드로는 The Globe가 적합.',
+ hours:H('16:00~01:00','16:00~01:00','16:00~01:00','16:00~01:00','16:00~01:00','14:00~01:00','14:00~00:00'),
+ hoursNote:'공식 월~금 16:00~01:00 / 토 14:00~01:00 / 일 14:00~00:00.',
+ resv:'일반 3인 예약정책 미확인.',
+ price:'현행 가격 미확인. 2025 HKD 88 프로모션 재사용 금지. 과거 해피아워 할인금액 재사용 금지.',
+ order:'Hobnail이 두 현장 리뷰 공통. 현행 메뉴에서 확인 후 주문. heavy pour(독한 술) 주의 사례.',
+ tips:['Bon Jovi 소리를 넘어 소리쳐야 할 정도의 소음, 좁아 단체끼리 부딪힘, 혼잡 시 주문 느림.','검증 가능한 독립 한국어 실방문 본문 미확보. 한국인 후기 표본 약함.'],
+ reviews:[
+  {who:'Kate Springer, Condé Nast Traveler',date:'게시일 미표시',url:'https://www.cntraveler.com/bars/hong-kong/the-pontiac',plus:'로커 분위기, 격식 없는 접객, Hobnail 등 칵테일 호평.',minus:'큰 소음, 좁은 공간, 혼잡 시 느린 주문. 편안한 대화보다 북적이는 심야 한 잔용.',w:'당시 해피아워·메뉴는 최신으로 사용 금지.'},
+  {who:'Min Ji Park, Honeycombers (현지 매체)',date:'2022-11-28 게시 · 2024-11-20 수정',url:'https://thehoneycombers.com/hong-kong/5-reasons-we-love-the-pontiac-bar-hong-kong/',plus:'직원 친근함, 개성 있는 칵테일(Hobnail·River·Demolition Derby), 포용적 분위기, 록앤롤.',minus:'당시 heavy pour 주의.',w:'홍콩 현지 매체 기자이며 한국 여행객 후기로 분류하지 않음. 기사 특정 제공 고지는 발견 못함.'}
+ ],
+ pin:{level:'공식 주소·좌표만',text:'공식 지도 버튼이 Facebook 경유 Google directions에 22.2816105, 114.1535568 좌표로 지정. 본문 주소와 지리 일치. 사업체 ID 핀 검증 아님.'},
+ map:'https://www.google.com/maps/dir/?api=1&destination=22.2816105,114.1535568', mapKind:'좌표 길찾기 링크',
+ conf:[['공식 주소·좌표','high'],['체험','medium'],['사업체 ID','low']],
+ links:[['공식','https://www.thepontiac.com/'],['메뉴','https://www.thepontiac.com/menu'],['검색 링크','https://www.google.com/maps/search/?api=1&query=The%20Pontiac%2013%20Old%20Bailey%20Street%20Hong%20Kong']]
+},
+{
+ id:'penicillin', cat:'bar', pri:false, name:'Penicillin', alt:'발효·실험적 칵테일',
+ addr:'L/G Amber Lodge, 23 Hollywood Road, Central', walk:[5,8], angle:120,
+ role:'실험적 맛에 관심 있을 때 한 곳만 선택. COA 대안. 편하게 앉아 큰 맥주 마시는 펍 대체 아님.',
+ hours:H('17:00~02:00','17:00~02:00','17:00~02:00','17:00~02:00','17:00~02:00','17:00~02:00','17:00~01:00'),
+ hoursNote:'공식 월~토 17:00~02:00 / 일 17:00~01:00. 현지 플랫폼 시간과 충돌해 당일 재확인.',
+ resv:'공식 일반예약 정책 불명확. 워크인 중심 후보, 좌석 보장 아님. 매우 작고 늘 바쁜 공간, 평일은 워크인 가능성.',
+ price:'2026-06 한국 방문 HKD 125, 서비스료 없음 사례. 현행 가격 아님.',
+ order:'산미·발효·술 세기를 먼저 말하고 주문. 후기상 Genetic Engineering(아보카도폼), One Penicillin One Tree 호평.',
+ tips:['18~19시 무대기, 20시 뒤 스탠딩까지 가득 찼던 방문 사례.','모든 메뉴가 취향에 맞는 건 아님(수박맛, 강한 술 등 호불호).'],
+ reviews:[
+  {who:'DEPE (한국 실방문)',date:'2026-06-01',url:'https://depe.tistory.com/288',plus:'서버의 밝은 응대, 재료 설명, 단짠·발효 균형. Genetic Engineering 아보카도폼, One Penicillin One Tree 크리미·딸기 산미.',minus:'H for Hope는 기대만큼 새롭지 않음. Our Final Warning은 수박맛이라 오래 마시기 부담. Advance Treatments는 외형보다 강한 술.',w:'협찬·제공 표기 발견 못함.'},
+  {who:'Carlo Mantuano, The Infatuation (방문형 매체)',date:'2025-03-10',url:'https://www.theinfatuation.com/hong-kong/reviews/penicillin',plus:'동서양 베이스 조합 훌륭. 피스타치오 버번·망고커드 진·판단 베르무스.',minus:'매우 작고 늘 바쁨.',w:'편집 매체 평가. 여행자 다수 후기와는 다름.'}
+ ],
+ pin:{level:'부분검증 · 공식→핀 연결 확인',text:'공식 짧은 링크(maps.app.goo.gl/PdpH8Prg6WtHbE7fA)가 실제 같은 업장으로 연결. feature 0x340401609c183f71:0xbf22f1b373ea94ad, 좌표 22.2822009, 114.1540191. Google 상세 패널 주소·리뷰 미확인.'},
+ map:'https://www.google.com/maps/place/Penicillin/@22.2822009,114.1540191,17z/data=!3m1!4b1!4m6!3m5!1s0x340401609c183f71:0xbf22f1b373ea94ad!8m2!3d22.2822009!4d114.1540191!16s%2Fg%2F11qn75nzhr', mapKind:'핀 링크',
+ conf:[['공식→핀 연결','high'],['체험 (2개 본문)','mh'],['최신 가격·메뉴','low']],
+ links:[['공식','https://penicillinbarhk.com/'],['검색 링크','https://www.google.com/maps/search/?api=1&query=Penicillin%2023%20Hollywood%20Road%20Hong%20Kong']]
+},
+{
+ id:'oldman', cat:'bar', pri:false, name:'The Old Man', alt:'작고 친밀한 헤밍웨이 테마 바',
+ addr:'37 Aberdeen Street, SoHo, Central', walk:[3,6], angle:338,
+ role:'다른 유명 바 대기가 길 때 가까운 선택지. 공간이 작아 3명 착석 보장 안 됨. Bar Leone의 좌석 보장 대체가 아님.',
+ hours:H(UNK,UNK,UNK,UNK,'17:00~02:00','17:00~02:00','17:00~00/01 충돌'),
+ hoursNote:'금토 17:00~02:00는 공식 웹·IG 일치. 일요일 마감은 웹 00시 / IG 01시 충돌. 그 외 요일은 이번 조사 범위에서 확인 안 됨.',
+ resv:'공식 IG no reservations.',
+ price:'현재 가격 확인 필요.',
+ order:'현행 메뉴에서 취향을 설명해 선택. 2018 메뉴명 고집하지 않기.',
+ tips:['간판 없는 입구와 골목이라 처음 헤맬 수 있음.','최근 한국인 실방문 표본 매우 약함 (2018 방문 후기뿐).'],
+ reviews:[
+  {who:'양뽕 (한국 실방문)',date:'2019-01-23 게시 · 2018-03/04 방문',url:'https://m.blog.naver.com/yangbbong87/221449290373',plus:'손님이 적던 때 쾌활한 바텐더와 대화, 헤밍웨이 책 이름을 쓴 독창적 칵테일, 영국풍 작은 반지하.',minus:'간판 없는 입구로 헤맴.',w:'2018 방문은 너무 오래돼 지금 서비스·메뉴·가격의 근거로 사용 금지. 함께 적힌 Quinary 음료 설명은 이 바와 무관.'},
+  {who:'Kate Springer, Condé Nast Traveler',date:'발행일 미표기',url:'https://www.cntraveler.com/bars/hong-kong/old-man',plus:'구리 냉각 바 상판, 친근한 설명.',minus:'작은 숨은 입구, 25명 정원 시절의 혼잡·입장 대기. 안주는 강점 아님.',w:'창업자 Agung 재직을 서술하는 옛 기사. 현재 인력·메뉴·정원 확정에 사용하지 않음.'}
+ ],
+ pin:{level:'부분검증 · 공식→핀 연결 확인',text:'공식 단축 링크(goo.gl/maps/WYHD35ZYboA2)가 실제 핀으로 연결. feature 0x3404007b9476a00d:0xd5e900aaa4d75f1f. 실제 장소 좌표는 22.2828473, 114.1516222 (URL @의 114.1494335는 지도 카메라 중심). Google 상세 패널 미확인.'},
+ map:'https://www.google.com/maps/place/The+Old+Man/@22.2828473,114.1494335,17z/data=!4m5!3m4!1s0x3404007b9476a00d:0xd5e900aaa4d75f1f!8m2!3d22.2828473!4d114.1516222', mapKind:'핀 링크',
+ conf:[['입지·컨셉','high'],['최신성','low'],['금토 시간','high']],
+ links:[['공식','https://theoldmanhongkong.com/'],['Instagram','https://www.instagram.com/theoldman_hk/'],['검색 링크','https://www.google.com/maps/search/?api=1&query=The%20Old%20Man%2037%20Aberdeen%20Street%20Hong%20Kong']]
+},
+{
+ id:'stauntons', cat:'bar', pri:false, name:'Staunton’s', alt:'Bar & Kitchen · 에스컬레이터 옆 펍·테라스',
+ addr:'G/F, 10–12 Staunton Street, Central', walk:[6,9], angle:222,
+ role:'테라스에서 소호 사람 구경하며 피맥. LKF보다 덜 소란한 영국펍 분위기. Iron Fairies 대신 대화용 대안.',
+ hours:H('10:00~00:00','10:00~00:00','10:00~00:00','10:00~00:00','10:00~00:00','10:00~00:00','10:00~00:00'),
+ hoursNote:'공식 매일 10:00~00:00. 2022 폐점 정보 대신 2023 재개장 이후 운영자료 사용.',
+ resv:'공식 테이블 예약 경로 있음.',
+ price:'현행 파인트 가격 확인 필요. 2024 맥주 HK$80 / 피자 168은 방문 당시 가격.',
+ order:'맥주 + 피자처럼 편한 메뉴. 후기상 Peroni 생맥주·홍콩 앰버에일 + 페퍼로니 피자.',
+ tips:['높은 의자가 불편, 청결은 아주 깔끔한 유형 아님, 테라스 흡연 연기 직접 맞은 사례. 담배 싫으면 실내.','당시 테라스 만석, 23시 이후 테라스 정리 사례.'],
+ reviews:[
+  {who:'김인턴 (한국 실방문, 내돈내산 명시)',date:'2024-12-17 게시 · 2024-10 평일 22시 방문',url:'https://m.blog.naver.com/waffle_jerry/223696955665',plus:'Peroni 생맥주·홍콩 앰버에일과 페퍼로니 피자 조합, 테라스 사람 구경, 덜 소란한 영국펍.',minus:'높은 의자 불편, 청결 보통, 테라스 흡연 연기. 테라스 만석·23시 이후 정리.',w:'독립 실방문 본문 1개. 한국인 최신 표본 약함. 좋은 자리·금연 환경 보장 아님.'}
+ ],
+ pin:{level:'부분검증',text:'Maps 브라우저 검색 후 업장명 ‘Staunton’s Bar & Kitchen’으로 실제 해석. feature 0x3404007ba81d0f33:0x6ff55c8013eb4d1d, 좌표 22.281775, 114.1529006. 상세 패널 주소·Google 후기 미확인. Foodie 2023·Tripadvisor 2026 후기는 본문 403으로 세지 않음.'},
+ map:'https://www.google.com/maps/place/Staunton\'s+Bar+%26+Kitchen/@22.281775,114.1529006,17z/data=!3m1!4b1!4m6!3m5!1s0x3404007ba81d0f33:0x6ff55c8013eb4d1d!8m2!3d22.281775!4d114.1529006!16s%2Fg%2F1tdws8fn', mapKind:'핀 링크',
+ conf:[['공식 운영','high'],['체험 (1개 본문)','medium'],['최신 가격','low']],
+ links:[['공식','https://stauntonshk.com/'],['연락처','https://stauntonshk.com/contact/'],['재개장 기사 SCMP','https://www.scmp.com/lifestyle/food-drink/article/3223071/guinness-london-street-food-stauntons-hong-kong-reopens-under-new-management-blessings-original'],['Foodie 2023 재개장 시식 (본문 403)','https://www.afoodieworld.com/blog/2023/07/08/stauntons-returns-gastropub/'],['Tripadvisor 2026-09 (본문 403)','https://www.tripadvisor.com/ShowUserReviews-g294217-d26659602-r1076373551-Staunton_s_Gastropub-Hong_Kong.html'],['검색 링크','https://www.google.com/maps/search/?api=1&query=Stauntons%2010-12%20Staunton%20Street%20Hong%20Kong']]
+},
+/* ---------------- FOOD ---------------- */
+{
+ id:'holeefook', cat:'food', pri:true, name:'Ho Lee Fook', alt:'口利福 · 공유 광둥요리 저녁',
+ addr:'3–5 Elgin Street, SoHo, Central', walk:[5,8], angle:278,
+ role:'저녁 공유요리 1순위. 차슈·해산물·볶음요리를 3명이 공유하고 술 곁들이기. 고급 광둥 저녁이지 저렴한 야장 아님.',
+ hours:H('18:00~22:30','18:00~22:30','18:00~22:30','18:00~23:30','18:00~23:30','18:00~23:30','18:00~22:30'),
+ hoursNote:'공식 일~수 18:00~22:30 / 목~토 18:00~23:30. 라스트오더 별도 미확인. 2026년 10월 메인메뉴 PDF 있음.',
+ resv:'공식 Reserve Now → SevenRooms. 날짜별 재고·카드보증·취소조건 미확인, 제출 안 함. 금토 저녁은 예약 우선 후보.',
+ price:'공식 PDF 있으나 내부 가격 미검증. 2024 당시 2인 메뉴·칵테일 합계 HK$1547.6 사례, 현재 견적 아님. 가격 높다는 후기.',
+ order:'후기상 맛조개+당면+마늘간장, 흑돼지 차슈, 전복내장 해산물 볶음밥 특히 호평. 인기요리·특수고기는 사전주문 여부를 현행 공식메뉴로 확인.',
+ tips:['예약 가능한 시간 고르기가 힘들었다는 사례. 작고 지하인 공간.','거위는 첫 입 향신료가 강함, 새우딤섬은 특별할 정도는 아니었다는 평가.'],
+ reviews:[
+  {who:'이여행 (한국 실방문)',date:'2024-07-06 게시 · 2024-06-16 방문',url:'https://m.blog.naver.com/leejournee/223503517626',plus:'느와르 세트 같은 화려한 인테리어, 좋은 BGM, 친절. 맛조개·흑돼지 차슈·전복내장 볶음밥.',minus:'예약 시간 고르기 힘듦, 가격 높음. 거위 향신료, 새우딤섬 평범, 작고 지하.',w:'최신 체제(Chef ArChan)의 독립 한국 후기 본문 1개. 별점 다수의 합의처럼 표현 금지.'}
+ ],
+ pin:{level:'부분검증',text:'브라우저가 실제 반환한 업장(한글명 호리푹) feature 0x3404007b9ca2027b:0x64470d09bc46ad83, 좌표 22.2830158, 114.1524584. 지도 주소는 공식·실방문과 일치. Google 상세 패널 미확인. CN Traveler 옛 기사(이전 셰프·인테리어)와 Foodie 2022 complimentary tasting 기사는 평가에서 제외.'},
+ map:'https://www.google.com/maps/place/%ED%98%B8%EB%A6%AC%ED%91%B9/@22.2830158,114.1524584,17z/data=!3m1!4b1!4m6!3m5!1s0x3404007b9ca2027b:0x64470d09bc46ad83!8m2!3d22.2830158!4d114.1524584!16s%2Fg%2F11b5yrbf0l', mapKind:'핀 링크',
+ conf:[['주소·공식시간','high'],['적합성','medium'],['현행 가격','low']],
+ links:[['공식','https://www.holeefook.com.hk/'],['메뉴 PDF (2026-10)','https://www.holeefook.com.hk/s/HLF_main_menu_Oct2026_Digital.pdf'],['예약 SevenRooms','https://www.sevenrooms.com/explore/holeefook/reservations/create/search/'],['검색 링크','https://www.google.com/maps/search/?api=1&query=Ho%20Lee%20Fook%203-5%20Elgin%20Street%20Hong%20Kong']]
+},
+{
+ id:'yardbird', cat:'food', pri:true, name:'Yardbird', alt:'야키토리·이자카야 · 활기 있는 저녁',
+ addr:'G/F, 154–158 Wing Lok Street, Sheung Wan', walk:[12,18], angle:352,
+ role:'공유 꼬치 + 맥주·하이볼로 흥겨운 저녁. 호텔 앞 생활권보다 외곽(상완). 조용한 대화·싼 꼬치집 기대는 맞지 않음.',
+ hours:H(CLOSED,'18:00~00:00','18:00~00:00','18:00~00:00','18:00~00:00','18:00~00:00',CLOSED),
+ hoursNote:'공식 화~토 18:00~00:00 / 일·월 휴무. 12월 6일 일요일에 넣지 말 것. 라스트오더 미확인.',
+ resv:'공식 BOOK NOW → Tock. 3인 좌석재고·보증금·취소조건 미확인.',
+ price:'현행 낱개 메뉴 가격 미확인. 꼬치 1주문이 1개라 비쌌고 물도 유료였다는 사례.',
+ order:'후기상 Thigh·Meatball·Wings·Tail 호평. 스페셜(Clams Yaki Soba 등)은 현행 존재 보장 안 됨.',
+ tips:['오픈 동시 주문이 몰려 첫 음식 지연, 미트볼 늦게 나옴, 이용시간 안내 사례.','금요일 음악·소음이 압도적이라는 현지 후기. 시소·옥수수튀김 선호는 후기마다 갈림.'],
+ reviews:[
+  {who:'민아 (한국 실방문)',date:'2025-06-09 게시 · 2025-04 초 방문',url:'https://m.blog.naver.com/minahan/223893101507',plus:'경쾌한 음악, 친절한 직원, 다국적 손님. Thigh·Meatball·Wings 신선하고 부드러움. Clams Yaki Soba 스페셜 매우 호평.',minus:'Ume Thigh 시소 조합 불호. KFC 콜리플라워·Yuba Gyoza·옥수수튀김은 재주문 낮음. 첫 음식 지연.',w:'협찬·초대 표기 발견 못함.'},
+  {who:'최도이 (한국 실방문)',date:'2025-07-19 게시',url:'https://m.blog.naver.com/choidoy/223939212654',plus:'성수동 같은 힙한 음악·인테리어, 한국어 QR 메뉴, 불향 꼬치·옥수수튀김.',minus:'꼬치 1개 단위라 비쌈, 물 유료, 미트볼 늦음, 이용시간 안내. 일부 시즌메뉴 없음.',w:'협찬 표기 발견 못함. 두 한국 후기의 선호가 서로 달라 취향 갈림을 보여줌.'},
+  {who:'Hedonist HK (홍콩 개인 블로그)',date:'2025-07-11',url:'https://hedonisthk.blogspot.com/2025/07/yardbird-sheung-wan-hong-kong-best-japanese-skewers-in-town-with-michelin-star.html',plus:'Tail의 탄력·사케/소금 맛, 바삭하고 촉촉한 날개.',minus:'금요일 소음 압도적, 날개 시치미 과함, Rib 질김, Achilles 중심부가 덜 익어 보임(단일 평가).',w:'단일 후기의 불안감이지 위생사고 확정 아님.'}
+ ],
+ pin:{level:'부분검증 · 공식→핀 연결 확인',text:'공식 지도 링크(maps.app.goo.gl/yGjWEAYtJAQsuvHG7)가 실제 업장으로 연결. feature 0x3404007bfc5df893:0x59ddb7c0550b93e5, 좌표 22.2872875, 114.1491083. Google 상세 패널 미확인.'},
+ map:'https://www.google.com/maps/place/Yardbird/@22.2872875,114.1491083,17z/data=!3m1!4b1!4m6!3m5!1s0x3404007bfc5df893:0x59ddb7c0550b93e5!8m2!3d22.2872875!4d114.1491083!16s%2Fg%2F11c2098skh', mapKind:'핀 링크',
+ conf:[['운영·시간·주소','high'],['후기 (3개 본문)','mh'],['2026 가격','low']],
+ links:[['공식','https://yardbirdrestaurant.com/'],['메뉴','https://yardbirdrestaurant.com/menu'],['예약 Tock','https://www.exploretock.com/yardbirdhongkong'],['검색 링크','https://www.google.com/maps/search/?api=1&query=Yardbird%20154-158%20Wing%20Lok%20Street%20Hong%20Kong']]
+},
+{
+ id:'kaukee', cat:'food', pri:true, name:'Kau Kee', alt:'九記牛腩 · 호텔 앞 소고기국수',
+ addr:'G/F, 21 Gough Street, Central', walk:[1,3], angle:75,
+ role:'호텔 앞 빠른 점심·이른 저녁. 맑은 양지국수와 진한 카레 양지·힘줄국수. 오래 술 마시는 식당 아님.',
+ hours:H('12:30~22:30','12:30~22:30','12:30~22:30','12:30~22:30','12:30~22:30','12:30~22:30',CLOSED),
+ hoursNote:'월~토 12:30~22:30 / 일 휴무 안내 다수. Tabelog는 19:15~20:30 중간휴식 표기, 연속영업 확정 아님. 안전한 계획은 14~17시. 공휴일 휴무 재확인.',
+ resv:'줄서서 현장 방문. 3인 동시 착석·합석 여부 보장 없음. 업장 자체 공식 채널 없음.',
+ price:'여행자 자료 1인 최소 HK$70 (HK$70~80), 최소주문 70, 현금 안내. 비공식이며 12월 정가로 확정 금지.',
+ order:'맑은 육수 브리스킷. 카레는 한국식과 달리 향신료가 강함.',
+ tips:['좁은 자리, 합석, 15분 안팎 회전의 빠른 처리형 서비스.','주말·저녁 20~40분 대기 사례. 평일 14~16시가 덜 붐빈다는 제안(공식 보장치 아님).'],
+ reviews:[
+  {who:'싱가포르 한대표 (한국 실방문)',date:'2026-03-17',url:'https://singapore58.tistory.com/entry/%ED%99%8D%EC%BD%A9%EC%97%90%EC%84%9C-%EB%A7%8C%EB%82%9C-%EC%B9%B4%EC%9A%B0%ED%82%A4-%EC%86%94%EC%A7%81%ED%9B%84%EA%B8%B0',plus:'깊은 소고기 육수, 부드러운 브리스킷.',minus:'카레 향신료 강함. 좁은 자리·합석·빠른 처리형 서비스.',w:'‘무조건 필수’ 같은 과장·정형 표현이 많고 방문일·주문표 근거 약해 가중치 낮음. 협찬 표기 발견 못함.'},
+  {who:'Jamie Chan, HK Expat Club (현지 매체)',date:'2026-03-15',url:'https://hkexpatclub.com/kau-kee-beef-brisket-noodles-central-guide/',plus:'맑은 육수와 카레를 직접 먹었다고 밝힘. 부드러운 양지, 진한 카레.',minus:'주말·저녁 20~40분 대기, 합석, 15분 회전.',w:'기사 본문의 HK$70~80·최소주문 70은 비공식 방문자료.'}
+ ],
+ pin:{level:'부분검증',text:'실제 핀(한글명 카우키) feature 0x3404007c87691369:0x6b05fded08bbfe67, 좌표 22.2842413, 114.1525076, CID 7711849131437456999. Google 상세 주소패널 미노출. 주소는 HK Expat Club 본문과 대조.'},
+ map:'https://www.google.com/maps?cid=7711849131437456999', mapKind:'핀 링크 (CID)',
+ conf:[['운영·주소','mh'],['시간','medium'],['가격','low']],
+ links:[['OpenRice','https://www.openrice.com/en/hongkong/r-kau-kee-restaurant-central-guangdong-noodles-rice-noodles-r1618'],['미쉐린','https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/kau-kee'],['시간 충돌 Tabelog','https://tabelog.com/hongkong/A5210/A521001/52000353/'],['핀 URL 전체','https://www.google.com/maps/place/%EC%B9%B4%EC%9A%B0%ED%82%A4/@22.2842413,114.1525076,17z/data=!3m1!4b1!4m6!3m5!1s0x3404007c87691369:0x6b05fded08bbfe67!8m2!3d22.2842413!4d114.1525076!16zL20vMGNoa2Jn']]
+},
+{
+ id:'singheungyuen', cat:'food', pri:true, name:'Sing Heung Yuen', alt:'勝香園 · 노천 차찬텡 토마토국수 아침',
+ addr:'G/F, 2 Mei Lun (Mee Lun) Street, Central', walk:[2,4], angle:40,
+ role:'토요일 아침 한 끼 체험. 토마토+소고기+달걀 국수, 크리스피 레몬/허니번, 밀크티·동윤영. 미식 대기 코스처럼 과장하지 않음.',
+ hours:H('08:00~ (마감 충돌)','08:00~ (마감 충돌)','08:00~ (마감 충돌)','08:00~ (마감 충돌)','08:00~ (마감 충돌)','08:00~ (마감 충돌)',CLOSED),
+ hoursNote:'월~토 08시 개점, 일 휴무. 마감은 15:00 / 15:30 / 17:00 출처 충돌로 미확인. 12월 5일 토 08~09시 추천, 일요일 아침엔 제외.',
+ resv:'노천 소규모 현장 줄서기. 예약정책 공식 미확인. 합석 가능.',
+ price:'OpenRice Below HK$50 카테고리(snippet_only). 조합별 현행 가격 미확인. 현금 준비 권장(당시 현금만 결제 사례).',
+ order:'토마토+소고기+달걀 국수, 연유 바른 바삭한 번, 동윤영(밀크티+커피).',
+ tips:['야외·합석·위생 민감하면 호불호. 비 오는 날 불리.','‘대단한 맛은 아니지만 간소하고 맛있다’는 절제된 평가.'],
+ reviews:[
+  {who:'라민/1번개미 (한국 실방문)',date:'2024-07-19',url:'https://m.blog.naver.com/1beon_gaemi/223518850451',plus:'토마토국물과 꼬들한 면, 연유 바른 바삭한 번, 동윤영 호평. 빠른 음식·회전.',minus:'오전 10시 빈 테이블 없어 합석. 당시 현금만 결제.',w:'협찬 표기 발견 못함. 여행 인플루언서 자기홍보 있음, 방문일 미기재.'},
+  {who:'곰비드 (한국)',date:'2026-01-23',url:'https://gomvid.tistory.com/136',plus:'토마토+소고기+달걀·레몬번, 아침 8~9시 추천.',minus:'노천·합석·위생 호불호 설명.',w:'구체 방문일·사진 근거 약하고 SEO·정형문구·자기홍보 많아 낮은 가중치. 대기 분수는 사실로 채택 안 함.'},
+  {who:'Hello! Hong Kong (현지 보조)',date:'2020-04-10',url:'https://www.hellohongkong.com.hk/blog/sing-heung-yuen',plus:'2 Mei Lun 주소, 토마토면·마카로니·레몬허니 번 확인.',minus:'—',w:'관광청·OpenRice 콘텐츠 감사표기가 있어 독립 실방문으로 세지 않음. 17시 마감 같은 오래된 정보 재사용 안 함.'}
+ ],
+ pin:{level:'부분검증',text:'실제 핀(한글명 싱흥유엔) feature 0x3404007c7f5aac37:0x38f6e3c380824877, 좌표 22.284096, 114.1525891, CID 4104718539208935543. 상세 주소패널 미노출. 주소는 한국 방문본문·현지 소개와 일치.'},
+ map:'https://www.google.com/maps?cid=4104718539208935543', mapKind:'핀 링크 (CID)',
+ conf:[['주소·업태','high'],['시간·운영','medium'],['현행 가격','low']],
+ links:[['홍콩관광청','https://www.discoverhongkong.com/eng/place-to-go/travel.guide-sing-heung-yuen.html'],['OpenRice','https://www.openrice.com/en/hongkong/r-sing-heung-yuen-central-hong-kong-style-r10577'],['핀 URL 전체','https://www.google.com/maps/place/%EC%8B%B1%ED%9D%A5%EC%9C%A0%EC%97%94/@22.284096,114.1525891,17z/data=!3m1!4b1!4m6!3m5!1s0x3404007c7f5aac37:0x38f6e3c380824877!8m2!3d22.284096!4d114.1525891!16s%2Fg%2F11bwfmk99w']]
+},
+{
+ id:'tsimchaikee', cat:'food', pri:false, name:'Tsim Chai Kee', alt:'沾仔記 · 완탕면 빠른 한 끼',
+ addr:'Shop B, G/F Jade Centre, 98 Wellington Street, Central', walk:[4,7], angle:95,
+ role:'큰 새우완탕 에그누들. 빠른 한 끼, 소호 이동 전후. 노란 에그누들의 탄력은 한국인 호불호가 매우 명확.',
+ hours:H('09~22 / 11~21:30 충돌','09~22 / 11~21:30 충돌','09~22 / 11~21:30 충돌','09~22 / 11~21:30 충돌','09~22 / 11~21:30 충돌','09~22 / 11~21:30 충돌','09~22 / 11~21:30 충돌'),
+ hoursNote:'TimeOut 매일 09~22시, 한국 2024 후기 11~21:30 충돌. 공식 확인 못함 → 아침 일찍 확정 추천 금지, 점심·이른 저녁 계획.',
+ resv:'줄서기·합석 중심. 온라인 예약 공식 정책 미확인.',
+ price:'OpenRice Below HK$50. 2024 HK$40, 2025 3토핑 HK$52는 과거 가격. 결제수단이 현금+옥토퍼스 / 현금만으로 엇갈려 현금 준비가 현실적.',
+ order:'새우완탕 우선. 노란면 불호면 쌀국수 등 면 선택 가능한지 현장에서 질문. 소고기는 새우완탕보다 덜 추천.',
+ tips:['처음 국물은 밍밍해 테이블 소스를 조금씩 추가 권유.','성인 3명이 셋 모두 면을 해파리처럼 느껴 남겼다는 사례. ‘한국인 입맛 모두 맞음’은 부정확.'],
+ reviews:[
+  {who:'채르르 (한국 실방문, 내돈내산 표기)',date:'2024-01-24',url:'https://m.blog.naver.com/pslmii/223332155660',plus:'새우완탕의 꽉 찬 속과 육수. 미리 주문·빠른 회전.',minus:'주말 10:45 도착 후 15분 대기, 합석. 국물 밍밍, 면은 ‘고무줄 같은 독특한 꼬들함’. 소고기 덜 추천.',w:'2024 HK$40은 과거 가격.'},
+  {who:'수맵 (한국 실방문)',date:'2025-08-22',url:'https://sumaplog.com/world-travel/honkong/tsim-chai-kee-hong-kong-wonton-noodle-mid-level-escalator/',plus:'토핑·국물은 괜찮음.',minus:'성인 3명 저녁 20시 약 20분 대기, 4인 테이블에 외부 1인 합석. 셋 모두 면을 해파리처럼 느껴 남김.',w:'푸드투어 제휴성 링크 있어 낮은 가중치. 부정적 맛평가와 구체 방문경험은 유용.'}
+ ],
+ pin:{level:'부분검증',text:'실제 핀(한글명 침차이키) feature 0x3404007b5da5df15:0x744f343e07fe1d49, 좌표 22.2829758, 114.1544256, CID 8380974872586493257. 상세 주소패널 미노출.'},
+ map:'https://www.google.com/maps?cid=8380974872586493257', mapKind:'핀 링크 (CID)',
+ conf:[['주소·운영','mh'],['적합성','medium'],['정확 시간·가격','low']],
+ links:[['미쉐린','https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/tsim-chai-kee-wellington-street'],['TimeOut','https://www.timeout.com/hong-kong/restaurants/tsim-chai-kee'],['핀 URL 전체','https://www.google.com/maps/place/%EC%B9%A8%EC%B0%A8%EC%9D%B4%ED%82%A4/@22.2829758,114.1544256,17z/data=!3m1!4b1!4m6!3m5!1s0x3404007b5da5df15:0x744f343e07fe1d49!8m2!3d22.2829758!4d114.1544256!16s%2Fg%2F1vlz7zpt']]
+},
+{
+ id:'bakehouse', cat:'food', pri:false, name:'Bakehouse Soho', alt:'에그타르트 포장 전용',
+ addr:'G/F, 5 Staunton Street, Central', walk:[6,9], angle:252,
+ role:'동선상 짧게 포장할 가치. 좌석 없는 포장점이라 카페 휴식으로 편성 금지. 긴 대기면 과감히 패스.',
+ hours:H('08:00~21:00','08:00~21:00','08:00~21:00','08:00~21:00','08:00~21:00','08:00~21:00','08:00~21:00'),
+ hoursNote:'공식 매일 08~21시. Takeaway only. 재고·품절 보장 없음.',
+ resv:'소호 포장 지점. 테이블 예약 대상 아님.',
+ price:'현행 공식 메뉴 Sourdough Egg Tart HK$14/개, 크루아상 25, 스콘 24. 3명 타르트 1개씩 HK$42 (검증 현행 메뉴, 12월 보장 아님). 후기의 HK$12.5는 방문 시점 가격.',
+ order:'에그타르트. 후기상 Salted Egg & Caramel Custard Bolo Bao가 상대적으로 호평.',
+ tips:['실제 읽은 두 한국인 후기 모두 기대 대비 평범·식감 호불호. ‘타르트 바삭함 호평’만 요약한 기존 가이드는 보완됨.','월요일 12:30 짧은 줄, 13시 늘어남 사례. 카드 결제 확인.'],
+ reviews:[
+  {who:'myfavorite (한국 실방문)',date:'2025-11-22',url:'https://m.blog.naver.com/myfavoriteee/224084567869',plus:'Salted Egg & Caramel Custard Bolo Bao 상대적 호평. 카드 결제·포장 확인.',minus:'타르트가 기대만큼 진하거나 바삭하지 않고 촉촉해 실망. 스콘 퍽퍽, 크루아상 평범.',w:'협찬 표기 발견 못함.'},
+  {who:'OreumUnni (한국인 작성자, 영문판)',date:'2026-06-01 · 수정 07-30',url:'https://oreumunni.com/en/bakehouse-egg-tart-hong-kong-review/',plus:'무대기 사례. 한 번 먹을 여행 간식으로는 괜찮음.',minus:'계속 먹고 싶을 정도는 아님. 아이스아메리카노는 작고 산미 강해 별도 카페 권유. 좌석 없음.',w:'영문 번역판이라 현지인 리뷰로 세지 않음. 상업 여행블로그 성격. 본문 HK$12.5는 당시 가격.'}
+ ],
+ pin:{level:'공식 지점 연결 검증 완료',text:'공식 Locations의 Soho See Map과 브라우저 검색 도착이 동일 feature 0x340401a1e06b6b29:0x858ae375766d4fe3. 장소 좌표 22.2817302, 114.153144, CID 9622753647468040163.'},
+ map:'https://www.google.com/maps/place/Bakehouse/@22.2817351,114.1505637,17z/data=!3m1!4b1!4m6!3m5!1s0x340401a1e06b6b29:0x858ae375766d4fe3!8m2!3d22.2817302!4d114.153144!16s%2Fg%2F11lfq7ftjq', mapKind:'핀 링크 (공식 See Map)',
+ conf:[['시간·주소·가격·업태','high'],['체험','medium']],
+ links:[['공식 지점','https://www.bakehouse.hk/locations'],['공식 메뉴·가격','https://www.bakehouse.hk/menu'],['CID 링크','https://www.google.com/maps?cid=9622753647468040163']]
+},
+{
+ id:'tsuiwah', cat:'food', pri:false, name:'Tsui Wah Central', alt:'翠華 · LKF 뒤 금토 심야·아침 백업 차찬텡',
+ addr:'UG/F, Silver Fortune Plaza, 1 Wellington Street, Central', walk:[9,13], angle:110,
+ role:'맛집 우열 추천이 아닌 심야 운영 편의 카드. 어묵국수·카레·토스트·밀크티. 금토 LKF 뒤 심야 식사 백업.',
+ hours:H('07:00~24:00','07:00~24:00','07:00~24:00','07:00~24:00','24시간','24시간','07:00~24:00'),
+ hoursNote:'공식 일~목 07~24 / 금·토 24시간 / 홍콩 공휴일 전날 24시간. Google 목록의 ‘24시간 영업’ 표시와 충돌하므로 매일 24시간으로 확대하지 말 것. 일요일 새벽·월요일 새벽의 날짜 경계 혼동 주의.',
+ resv:'예약정책 공식 미확인. 캐주얼 워크인 후보.',
+ price:'현행 지점별 메뉴 미확인.',
+ order:'어묵국수·카레·토스트·밀크티. 해장 맛집 순위가 아니라 영업시간 백업.',
+ tips:['현 지점(1 Wellington) 독립 방문후기 본문 미확보. 다른 지점·옛 주소 후기와 섞지 않음.','같은 검색에 구주소 15D–19 Wellington Street의 Tsui Wah가 폐업으로 별도 노출. 옛 주소 사용 금지.'],
+ reviews:[
+  {who:'현 지점 독립 후기 미확보',date:'2026-10-22 기준',url:'',plus:'—',minus:'—',w:'OpenRice·Tripadvisor 현 지점 후기 경로는 본문 403으로 미확보. 검색 스니펫의 평점 2.5·후기 2개 등은 본문 검증이 안 되어 채택하지 않음. 음식·서비스 장단점을 확정할 근거 부족.'}
+ ],
+ pin:{level:'주소 직접 검증',text:'Google Maps 목록 주소 직접 읽음: 高層地下 荊威廣場 Silver Fortune Plaza 1號, 1 Wellington St. 전화 +852 2525 6338. feature 0x340401005124735d:0x5bd37931d8737910, 좌표 22.2810548, 114.1561266, CID 6616765532529195280.'},
+ map:'https://www.google.com/maps/place/Tsui+Wah+Restaurant+(Central)/@22.2810548,114.1561266,17z/data=!4m6!3m5!1s0x340401005124735d:0x5bd37931d8737910!8m2!3d22.2810548!4d114.1561266!16s%2Fg%2F11wv35h4fr', mapKind:'핀 링크',
+ conf:[['주소·공식시간','high'],['계획 적합성','medium'],['가격·후기','low']],
+ links:[['공식 지점','https://www.tsuiwah.com/index.php/en/shoplocation-en/tsuiwah-central-en'],['홍콩관광청','https://www.discoverhongkong.com/eng/travel-guide/qts/restaurants-results/restaurants-details.id4323.tsui-wah-restaurant.html'],['CID 링크','https://www.google.com/maps?cid=6616765532529195280'],['OpenRice 현 지점 (403)','https://www.openrice.com/en/hongkong/r-tsui-wah-restaurant-central-hong-kong-style-r888537/reviews'],['Tripadvisor (403)','https://www.tripadvisor.com/Restaurant_Review-g294217-d33441481-Reviews-Tsui_Wah_Restaurant-Hong_Kong.html']]
+}
+];
+
+const CHECKS = [
+ 'COA 도어에서 호출수단·복귀 제한 확인 (근처 식사 중 대기 가능한지)',
+ 'Bar Leone 금토 15시 개점 현장 재확인, 대기 길면 즉시 전환',
+ 'Iron Fairies 해당 날짜 공연시각·입장료·최소주문·보증금 공식 확인',
+ 'Ho Lee Fook / Yardbird 예약 가능 시간과 취소조건 확인 (SevenRooms / Tock)',
+ 'Kau Kee 중간휴식(19:15~20:30) 여부와 공휴일 휴무 확인',
+ 'Sing Heung Yuen 마감시간 확인 (15:00 / 15:30 / 17:00 충돌)',
+ 'Tsim Chai Kee 영업시간 확인, 면 종류 선택 가능 여부 질문',
+ 'The Old Man 일요일 마감 (웹 00시 / IG 01시) 확인',
+ 'Tsui Wah 1 Wellington 지점 금토 24시간 운영 재확인',
+ '현금 준비 (Kau Kee · Sing Heung Yuen · Tsim Chai Kee 현금 사례)',
+ '귀가 경로: Hollywood Road 도로축, 계단 회피 지도 확인'
+];
+
+/* ============ STATE ============ */
+const LS = {
+ get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},
+ set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+};
+let favs = new Set(LS.get('kuf.favs',[]));
+let cat = 'all', q = '', hoursDay = 'fri';
+
+/* ============ ICONS ============ */
+const I = {
+ home:'<svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>',
+ plan:'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>',
+ places:'<svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+ planb:'<svg viewBox="0 0 24 24"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17.5v.5"/></svg>',
+ verify:'<svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>',
+ bar:'<svg viewBox="0 0 24 24"><path d="M5 3h14l-7 9z"/><path d="M12 12v8M8 20h8"/></svg>',
+ food:'<svg viewBox="0 0 24 24"><path d="M5 3v7a3 3 0 0 0 6 0V3M8 3v18"/><path d="M17 3c-2 2-2.5 5-2.5 8h2.5v10"/></svg>',
+ star:'<svg viewBox="0 0 24 24"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/></svg>',
+ map:'<svg viewBox="0 0 24 24"><path d="M9 4l6 2 6-2v14l-6 2-6-2-6 2V6z"/><path d="M9 4v14M15 6v14"/></svg>',
+ ext:'<svg viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>'
+};
+const TABS = [['home','홈'],['plan','일정'],['places','장소'],['planb','대비'],['verify','검증']];
+
+/* ============ NAV ============ */
+function renderTabs(){
+ const html = TABS.map(([k,l])=>`<button class="tab" data-go="${k}">${I[k]}<span>${l}</span></button>`).join('');
+ document.getElementById('tabs').innerHTML = html;
+ document.getElementById('deskTabs').innerHTML = html;
+ document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+}
+function go(k){
+ if(!TABS.some(t=>t[0]===k)) k='home';
+ document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.dataset.screen===k));
+ document.querySelectorAll('[data-go]').forEach(b=>b.classList.toggle('active',b.dataset.go===k));
+ try{ history.replaceState(null,'','#'+k) }catch(e){}
+ window.scrollTo({top:0});
+}
+
+/* ============ RINGS ============ */
+function renderRings(){
+ const W=560, cx=280, cy=280, scale=13; // px per minute (max ~18min → 234px)
+ const ringMins=[5,10,15];
+ let s=`<svg viewBox="0 0 ${W} ${W}" role="img" aria-label="호텔 기준 추정 도보시간 개념도">`;
+ ringMins.forEach(m=>{ s+=`<circle class="ring" cx="${cx}" cy="${cy}" r="${m*scale}"/><text class="ringlab" x="${cx+4}" y="${cy-m*scale-4}">${m}분</text>`; });
+ s+=`<text class="zone" x="${cx+150}" y="${cy-175}" text-anchor="middle">GOUGH · SHIN HING</text>`;
+ s+=`<text class="zone" x="${cx+165}" y="${cy+150}" text-anchor="middle">HOLLYWOOD · LKF 방면</text>`;
+ s+=`<text class="zone" x="${cx-160}" y="${cy+150}" text-anchor="middle">SOHO · STAUNTON · ELGIN</text>`;
+ s+=`<text class="zone" x="${cx-200}" y="${cy-120}" text-anchor="middle">BRIDGES · ABERDEEN · 상완</text>`;
+ PLACES.forEach(p=>{
+  const r=((p.walk[0]+p.walk[1])/2)*scale, a=(p.angle-90)*Math.PI/180;
+  const x=cx+r*Math.cos(a), y=cy+r*Math.sin(a);
+  const anchor = x>cx+20?'start':(x<cx-20?'end':'middle');
+  const tx = x + (anchor==='start'?8:anchor==='end'?-8:0), ty = y + (anchor==='middle'?(y<cy?-9:14):4);
+  s+=`<g class="pt" data-open="${p.id}" style="cursor:pointer"><circle class="dot ${p.cat}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${p.pri?6:4.5}"/><text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="${anchor}">${p.name}</text></g>`;
+ });
+ s+=`<circle class="hotel" cx="${cx}" cy="${cy}" r="8"/><circle cx="${cx}" cy="${cy}" r="13" fill="none" stroke="var(--accent)" stroke-opacity=".35"/><text x="${cx}" y="${cy+26}" text-anchor="middle" style="font-weight:600">호텔 · 3 Kau U Fong</text>`;
+ s+='</svg>';
+ document.getElementById('rings').innerHTML=s;
+}
+
+/* ============ PLACES ============ */
+function hoursFor(p,d){
+ const v=p.hours[d];
+ const closed = v===CLOSED, unk = v===UNK, conflict = /충돌/.test(v);
+ return {v,closed,unk,conflict};
+}
+function renderPlaces(){
+ const list=document.getElementById('placeList');
+ const qq=q.trim().toLowerCase();
+ let items=PLACES.filter(p=>{
+  if(cat==='bar'&&p.cat!=='bar')return false;
+  if(cat==='food'&&p.cat!=='food')return false;
+  if(cat==='pri'&&!p.pri)return false;
+  if(cat==='fav'&&!favs.has(p.id))return false;
+  if(qq){ const hay=[p.name,p.alt,p.addr,p.role,p.order,(p.tips||[]).join(' ')].join(' ').toLowerCase(); if(!hay.includes(qq))return false; }
+  return true;
+ }).sort((a,b)=>(a.walk[0]+a.walk[1])-(b.walk[0]+b.walk[1]));
+ document.getElementById('placeCount').textContent = `${items.length}곳 · 도보 가까운 순`;
+ if(!items.length){ list.innerHTML='<div class="empty">조건에 맞는 장소가 없다. 필터를 바꾸거나 검색어를 지우면 된다.</div>'; return; }
+ list.innerHTML=items.map(p=>{
+  const h=hoursFor(p,hoursDay);
+  const hcls = h.closed?'closed':(h.conflict||h.unk?'conf':'');
+  const htxt = h.closed?`${DAYS[hoursDay]} 휴무`:(h.unk?`${DAYS[hoursDay]} 미확인`:`${DAYS[hoursDay]} ${h.v}`);
+  return `<button class="pc" data-open="${p.id}" aria-label="${p.name} 상세">
+   <div class="top">
+    <span class="cat ${p.cat}">${I[p.cat]}</span>
+    <span class="names"><b>${p.name}</b><span>${p.alt}</span></span>
+    <span class="walk">${p.walk[0]}~${p.walk[1]}분</span>
+   </div>
+   <p class="role">${p.role}</p>
+   <div class="meta">
+    ${p.pri?'<span class="tag pri">우선 추천</span>':'<span class="tag">대체 카드</span>'}
+    <span class="hrs ${hcls}">${htxt}</span>
+   </div>
+   <span class="fav ${favs.has(p.id)?'on':''}" data-fav="${p.id}" role="button" aria-label="내 선택에 추가">${I.star}</span>
+  </button>`;
+ }).join('');
+}
+
+/* ============ DETAIL SHEET ============ */
+const sheet=document.getElementById('sheet'), sheetBg=document.getElementById('sheetBg');
+function openPlace(id){
+ const p=PLACES.find(x=>x.id===id); if(!p)return;
+ document.getElementById('sheetTitle').textContent=p.name;
+ const tripDays=['fri','sat','sun','mon'];
+ const hoursTbl=Object.keys(DAYS).map(d=>{const h=hoursFor(p,d);return `<div class="h ${h.closed?'closed':''} ${h.unk?'unk':''} ${tripDays.includes(d)?'trip':''}"><b>${DAYS[d]}</b><span>${h.v.replace(' / 11~21:30 충돌','*').replace(' (마감 충돌)','*').replace(' 충돌','*')}</span></div>`}).join('');
+ const conf=p.conf.map(([k,v])=>`<span class="conf ${v}"><i></i>${k} · ${({high:'high',mh:'medium-high',medium:'medium',low:'low'})[v]}</span>`).join('');
+ const reviews=p.reviews.map(r=>`<div class="review">
+   <div class="who"><b>${r.who}</b><span>${r.date}</span></div>
+   <div class="pm">${r.plus&&r.plus!=='—'?`<div><span class="p">＋</span><span>${r.plus}</span></div>`:''}${r.minus&&r.minus!=='—'?`<div><span class="m">－</span><span>${r.minus}</span></div>`:''}</div>
+   <div class="w">${r.w}${r.url?` · <a href="${r.url}" target="_blank" rel="noopener">원문 보기</a>`:''}</div>
+  </div>`).join('');
+ const links=p.links.map(([l,u])=>`<a href="${u}" target="_blank" rel="noopener"><span class="l">${l}</span><span class="u">${u.replace(/^https?:\/\//,'')}</span></a>`).join('');
+ document.getElementById('sheetBody').innerHTML=`
+  <div class="d-head">
+   <div class="tags"><span class="tag ${p.cat}">${p.cat==='bar'?'바 · 펍':'식당 · 카페'}</span>${p.pri?'<span class="tag pri">우선 추천</span>':'<span class="tag">대체 카드</span>'}<span class="tag">도보 ${p.walk[0]}~${p.walk[1]}분 추정</span></div>
+   <h2>${p.name}</h2>
+   <p class="alt">${p.alt}</p>
+   <p class="mono small muted">${p.addr}</p>
+  </div>
+  <div class="d-actions">
+   <a class="btn primary" href="${p.map}" target="_blank" rel="noopener">${I.map}지도 열기 <span style="opacity:.75;font-weight:400">· ${p.mapKind}</span></a>
+   <button class="btn" data-fav="${p.id}" id="sheetFav">${I.star}${favs.has(p.id)?'내 선택 해제':'내 선택에 추가'}</button>
+  </div>
+  <div class="d-sec"><h4>역할 · 왜 가나</h4><p>${p.role}</p></div>
+  <div class="d-sec"><h4>영업시간 · 여행일 강조</h4><div class="hours-tbl">${hoursTbl}</div><p class="footnote">${p.hoursNote}${/충돌/.test(Object.values(p.hours).join(''))?' (* 출처 충돌)':''}</p></div>
+  <div class="d-sec"><h4>예약 · 가격</h4><dl class="kv"><dt>예약</dt><dd>${p.resv}</dd><dt>가격</dt><dd>${p.price}</dd></dl></div>
+  <div class="d-sec"><h4>추천 주문</h4><div class="callout jade">${p.order}</div></div>
+  <div class="d-sec"><h4>주의</h4><ul class="list-dot">${p.tips.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+  <div class="d-sec"><h4>실방문 후기 (Google 리뷰 아님)</h4>${reviews}</div>
+  <div class="d-sec"><h4>지도 핀 검증 · ${p.pin.level}</h4><p class="small muted">${p.pin.text}</p></div>
+  <div class="d-sec"><h4>신뢰도</h4><div class="conf-row">${conf}</div></div>
+  <div class="d-sec"><h4>출처 링크</h4><div class="src">${links}</div></div>`;
+ sheet.classList.add('open'); sheetBg.classList.add('open'); document.body.style.overflow='hidden';
+ document.getElementById('sheetBody').scrollTop=0;
+ document.getElementById('sheetClose').focus();
+}
+function closeSheet(){ sheet.classList.remove('open'); sheetBg.classList.remove('open'); document.body.style.overflow=''; }
+
+/* ============ CHECKLIST ============ */
+function renderChecks(){
+ const done=new Set(LS.get('kuf.checks',[]));
+ document.getElementById('checklist').innerHTML=CHECKS.map((c,i)=>`<label class="${done.has(i)?'done':''}"><input type="checkbox" id="chk${i}" data-i="${i}" ${done.has(i)?'checked':''}><span>${c}</span></label>`).join('');
+}
+
+/* ============ EVENTS ============ */
+document.addEventListener('click',e=>{
+ const fav=e.target.closest('[data-fav]');
+ if(fav){ e.stopPropagation(); e.preventDefault(); const id=fav.dataset.fav; favs.has(id)?favs.delete(id):favs.add(id); LS.set('kuf.favs',[...favs]); renderPlaces(); if(fav.id==='sheetFav'){fav.innerHTML=I.star+(favs.has(id)?'내 선택 해제':'내 선택에 추가');} return; }
+ const op=e.target.closest('[data-open]');
+ if(op){ openPlace(op.dataset.open); return; }
+});
+document.getElementById('sheetClose').addEventListener('click',closeSheet);
+sheetBg.addEventListener('click',closeSheet);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&sheet.classList.contains('open')) closeSheet(); });
+document.getElementById('q').addEventListener('input',e=>{ q=e.target.value; renderPlaces(); });
+document.getElementById('catChips').addEventListener('click',e=>{ const b=e.target.closest('.chip'); if(!b)return; cat=b.dataset.cat; document.querySelectorAll('#catChips .chip').forEach(c=>c.classList.toggle('on',c===b)); renderPlaces(); });
+document.getElementById('daySeg').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return; hoursDay=b.dataset.d; document.querySelectorAll('#daySeg button').forEach(c=>c.classList.toggle('on',c===b)); renderPlaces(); });
+document.getElementById('dayNav').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return; document.querySelectorAll('#dayNav button').forEach(c=>c.classList.toggle('on',c===b)); document.querySelectorAll('.day').forEach(d=>d.classList.toggle('on',d.dataset.day===b.dataset.day)); });
+document.getElementById('checklist').addEventListener('change',e=>{ const inp=e.target; if(inp.type!=='checkbox')return; const done=new Set(LS.get('kuf.checks',[])); inp.checked?done.add(+inp.dataset.i):done.delete(+inp.dataset.i); LS.set('kuf.checks',[...done]); inp.closest('label').classList.toggle('done',inp.checked); });
+
+/* ============ INIT ============ */
+renderTabs(); renderRings(); renderPlaces(); renderChecks();
+go((location.hash||'#home').slice(1));
+</script>
+</body>
+</html>
