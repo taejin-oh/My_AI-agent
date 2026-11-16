@@ -1,0 +1,19 @@
+RESULT id=s64_1 mem_MiB=64 dirty_MiB=0 mode=c ckpt_rc=0 ckpt_s=.059024279 snapshot_kB=65556 restore_rc=0 restore_s=.090443084 counter_before=2 counter_after=3 files=[checkpoint.img=168189 pages.img=66949120 pages_meta.img=2808 ]
+RESULT id=s64_2 mem_MiB=64 dirty_MiB=0 mode=c ckpt_rc=0 ckpt_s=.055496561 snapshot_kB=65556 restore_rc=0 restore_s=.097976514 counter_before=2 counter_after=3 files=[checkpoint.img=168118 pages.img=66949120 pages_meta.img=2782 ]
+RESULT id=s64_3 mem_MiB=64 dirty_MiB=0 mode=c ckpt_rc=0 ckpt_s=.060993730 snapshot_kB=65556 restore_rc=0 restore_s=.089451501 counter_before=2 counter_after=4 files=[checkpoint.img=168123 pages.img=66949120 pages_meta.img=2780 ]
+RESULT id=s256_1 mem_MiB=256 dirty_MiB=0 mode=c ckpt_rc=0 ckpt_s=.334843508 snapshot_kB=261364 restore_rc=0 restore_s=.159279468 counter_before=2 counter_after=4 files=[checkpoint.img=168197 pages.img=267448320 pages_meta.img=9642 ]
+RESULT id=s256_2 mem_MiB=256 dirty_MiB=0 mode=c ckpt_rc=0 ckpt_s=.311728226 snapshot_kB=261368 restore_rc=0 restore_s=.147873958 counter_before=2 counter_after=4 files=[checkpoint.img=168193 pages.img=267448320 pages_meta.img=9642 ]
+RESULT id=s256_3 mem_MiB=256 dirty_MiB=0 mode=c ckpt_rc=0 ckpt_s=.231030509 snapshot_kB=261364 restore_rc=0 restore_s=.183285463 counter_before=2 counter_after=4 files=[checkpoint.img=168220 pages.img=267448320 pages_meta.img=9642 ]
+RESULT id=s512_1 mem_MiB=512 dirty_MiB=0 mode=c ckpt_rc=0 ckpt_s=.414091599 snapshot_kB=522520 restore_rc=0 restore_s=.232278312 counter_before=2 counter_after=4 files=[checkpoint.img=168204 pages.img=534863872 pages_meta.img=19096 ]
+RESULT id=s512_2 mem_MiB=512 dirty_MiB=0 mode=c ckpt_rc=0 ckpt_s=.507075278 snapshot_kB=522520 restore_rc=0 restore_s=.257489409 counter_before=2 counter_after=4 files=[checkpoint.img=168193 pages.img=534863872 pages_meta.img=19104 ]
+RESULT id=s512_3 mem_MiB=512 dirty_MiB=0 mode=c ckpt_rc=0 ckpt_s=.513522844 snapshot_kB=522520 restore_rc=0 restore_s=.238963609 counter_before=2 counter_after=4 files=[checkpoint.img=168185 pages.img=534863872 pages_meta.img=19096 ]
+RESULT id=s1024_1 mem_MiB=1024 dirty_MiB=0 mode=c ckpt_rc=0 ckpt_s=.757171803 snapshot_kB=1044672 restore_rc=0 restore_s=.383217307 counter_before=2 counter_after=4 files=[checkpoint.img=168296 pages.img=1069522944 pages_meta.img=39500 ]
+RESULT id=s1024_2 mem_MiB=1024 dirty_MiB=0 mode=c ckpt_rc=0 ckpt_s=.703307758 snapshot_kB=1044668 restore_rc=0 restore_s=.404523335 counter_before=2 counter_after=4 files=[checkpoint.img=168391 pages.img=1069522944 pages_meta.img=39486 ]
+RESULT id=s1024_3 mem_MiB=1024 dirty_MiB=0 mode=c ckpt_rc=0 ckpt_s=1.355559958 snapshot_kB=1044672 restore_rc=0 restore_s=.431264290 counter_before=2 counter_after=4 files=[checkpoint.img=168298 pages.img=1069522944 pages_meta.img=39494 ]
+RESULT id=rnd256_1 mem_MiB=256 dirty_MiB=0 mode=r ckpt_rc=0 ckpt_s=.129855221 snapshot_kB=262428 restore_rc=0 restore_s=.147740229 counter_before=2 counter_after=3 files=[checkpoint.img=168143 pages.img=268546048 pages_meta.img=554 ]
+RESULT id=rnd256_2 mem_MiB=256 dirty_MiB=0 mode=r ckpt_rc=0 ckpt_s=.313527089 snapshot_kB=262428 restore_rc=0 restore_s=.122243675 counter_before=2 counter_after=4 files=[checkpoint.img=168294 pages.img=268546048 pages_meta.img=624 ]
+RECLAIM before_run=2239 13848 running=3217 12869 after_checkpoint=2171 13916 after_delete=2174 13913
+CONCURRENT N=4 wall_s=1174.209026759 per: c4_1 ckpt_s=.464427590 c4_2 ckpt_s=.513317221 c4_4 ckpt_s=.521860338 c4_3 ckpt_s=.570804148 
+SEQUENTIAL N=4 wall_s=1.295926241
+CONCURRENT N=8 wall_s=1.784172726 per: c8_8 ckpt_s=.377657010 c8_2 ckpt_s=.790030176 c8_5 ckpt_s=.792969066 c8_6 ckpt_s=.897984380 c8_1 ckpt_s=.908635724 c8_4 ckpt_s=.968641195 c8_3 ckpt_s=1.498448928 c8_7 ckpt_s=1.777370547 
+SEQUENTIAL N=8 wall_s=2.641547839

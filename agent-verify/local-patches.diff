@@ -1,0 +1,94 @@
+diff --git a/cmd/dataplane/envoy/Dockerfile b/cmd/dataplane/envoy/Dockerfile
+index 29f6f5cd..156490a8 100644
+--- a/cmd/dataplane/envoy/Dockerfile
++++ b/cmd/dataplane/envoy/Dockerfile
+@@ -39,6 +39,8 @@ RUN case "$TARGETARCH" in \
+ 
+ # Copy rust workspace source code
+ COPY dynamic-modules/ .
++# LOCAL PATCH (verification): trust the session's egress proxy CA for cargo git fetches
++RUN cp /usr/src/dynamic-modules/ccr-ca.crt /usr/local/share/ca-certificates/ccr-ca.crt && update-ca-certificates
+ 
+ # Build release version of the dynamic module shared libraries
+ RUN arch="$(cat /target-arch)" \
+diff --git a/hack/create-kind-cluster.sh b/hack/create-kind-cluster.sh
+index b3b25db2..28178a6e 100755
+--- a/hack/create-kind-cluster.sh
++++ b/hack/create-kind-cluster.sh
+@@ -91,6 +91,7 @@ kind: Cluster
+ apiVersion: kind.x-k8s.io/v1alpha4
+ nodes:
+ - role: control-plane
++  image: kind-node-patched:v1.37.0  # LOCAL PATCH (verification): runc wrapper for oom_score_adj
+ EOF
+ if [ "${HAS_KVM}" = "1" ]; then
+   cat <<EOF >> "${ROOT}/bin/kind-config.yaml"
+@@ -124,6 +125,8 @@ kubeadmConfigPatches:
+   kind: KubeletConfiguration
+   serializeImagePulls: false
+   maxParallelImagePulls: 4
++  # LOCAL PATCH (verification): host is cgroup v1
++  failCgroupV1: false
+ EOF
+ # Hundreds of sandboxes per node can starve the kubelet's node heartbeat; after
+ # the 300 s toleration the taint manager evicts every pod on the node. Opt in to
+diff --git a/manifests/ate-install/atenet-egress.yaml b/manifests/ate-install/atenet-egress.yaml
+index 5e874502..01974fb0 100644
+--- a/manifests/ate-install/atenet-egress.yaml
++++ b/manifests/ate-install/atenet-egress.yaml
+@@ -74,7 +74,7 @@ data:
+         address:
+           # ipv4_compat rather than a second socket: IPv4 peers arrive as
+           # ::ffff: and nothing here reads the peer -- identity is the cert.
+-          socket_address: { address: "::", ipv4_compat: true, port_value: 443 }
++          socket_address: { address: "0.0.0.0", port_value: 443 }  # LOCAL PATCH (verification): host has ipv6.disable=1
+         # Limit single I/O read to 64 Kb to prevent overly active actors from starving other actors.
+         per_connection_buffer_limit_bytes: 65535
+         filter_chains:
+@@ -836,7 +836,7 @@ data:
+       - name: envoy_metrics
+         stat_prefix: admin_metrics
+         address:
+-          socket_address: { address: "::", ipv4_compat: true, port_value: 15090 }
++          socket_address: { address: "0.0.0.0", port_value: 15090 }  # LOCAL PATCH (verification): host has ipv6.disable=1
+         filter_chains:
+         - filters:
+           - name: envoy.filters.network.http_connection_manager
+diff --git a/manifests/ate-install/atenet-router.yaml b/manifests/ate-install/atenet-router.yaml
+index 35b630c4..38934c79 100644
+--- a/manifests/ate-install/atenet-router.yaml
++++ b/manifests/ate-install/atenet-router.yaml
+@@ -108,8 +108,7 @@ data:
+         stat_prefix: admin_metrics
+         address:
+           socket_address:
+-            address: "::"
+-            ipv4_compat: true
++            address: "0.0.0.0"  # LOCAL PATCH (verification): host has ipv6.disable=1
+             port_value: 9902
+         filter_chains:
+         - filters:
+diff --git a/manifests/ate-install/components/agentgateway-static-mtls/configmap.yaml b/manifests/ate-install/components/agentgateway-static-mtls/configmap.yaml
+index a9060cb5..3d41afa5 100644
+--- a/manifests/ate-install/components/agentgateway-static-mtls/configmap.yaml
++++ b/manifests/ate-install/components/agentgateway-static-mtls/configmap.yaml
+@@ -22,6 +22,7 @@ data:
+     # yaml-language-server: $schema=https://agentgateway.dev/schema/config
+     config:
+       statsAddr: 0.0.0.0:15020
++      readinessAddr: 0.0.0.0:15021  # LOCAL PATCH (verification): host has ipv6.disable=1
+       backend:
+         # See the ingress-only loopback rationale in ../agentgateway/configmap.yaml.
+         allowDynamicLoopback: true
+diff --git a/manifests/ate-install/components/agentgateway/configmap.yaml b/manifests/ate-install/components/agentgateway/configmap.yaml
+index 4bf9d4ac..04ea429f 100644
+--- a/manifests/ate-install/components/agentgateway/configmap.yaml
++++ b/manifests/ate-install/components/agentgateway/configmap.yaml
+@@ -22,6 +22,7 @@ data:
+     # yaml-language-server: $schema=https://agentgateway.dev/schema/config
+     config:
+       statsAddr: 0.0.0.0:15020
++      readinessAddr: 0.0.0.0:15021  # LOCAL PATCH (verification): host has ipv6.disable=1
+       backend:
+         # The dynamic-backend guard checks CONNECT authority before tunneling.
+         # substrateIngress resolves ate-target-actor through ate-api-server to
