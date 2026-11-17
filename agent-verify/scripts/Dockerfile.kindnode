@@ -1,0 +1,3 @@
+FROM kindest/node:v1.37.0
+COPY runc-wrapper.sh /usr/local/sbin/runc-wrapper
+RUN mv /usr/local/sbin/runc /usr/local/sbin/runc.real && cp /usr/local/sbin/runc-wrapper /usr/local/sbin/runc && chmod +x /usr/local/sbin/runc
